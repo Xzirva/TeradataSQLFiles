@@ -1,0 +1,14 @@
+--DROP SCHEMA "prdwa17";
+--CREATE SCHEMA prdwa17_staging;
+--CREATE SCHEMA prdwa17_target;
+--CREATE SCHEMA prdwa17_ml;
+CREATE TABLE tmp_content(
+	id decimal(10,0) NOT NULL GENERATED ALWAYS AS IDENTITY
+           (START WITH 1 
+            INCREMENT BY 1 
+            MINVALUE 1 
+            MAXVALUE 2147483647 
+            NO CYCLE),
+	content TEXT,
+	PRIMARY KEY(id)
+)

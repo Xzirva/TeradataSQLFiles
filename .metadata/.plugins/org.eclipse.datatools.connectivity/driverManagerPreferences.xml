@@ -1,0 +1,15 @@
+#DriverManager.Preferences
+#Fri Oct 20 15:14:36 CEST 2017
+com.teradata.datatools.hadoop.cloudera.connectivity.clouderaPrestoDriverTemplate=true
+org.eclipse.datatools.enablement.ibm.db2.luw.jdbc4.kerberosDriverTemplate=true
+org.eclipse.datatools.connectivity.db.teradata.driverTemplate_13=true
+com.teradata.datatools.hadoop.cloudera.connectivity.clouderaDriverTemplate=true
+com.teradata.datatools.asterdata.connectivity.asterdataDriverTemplate=true
+org.eclipse.datatools.enablement.ibm.db2.luw.jdbc4.driverTemplate=true
+com.teradata.datatools.hadoop.hortonworks.connectivity.prestoDriverTemplate=true
+org.eclipse.datatools.enablement.ibm.db2.luw.kerberosDriverTemplate=true
+com.teradata.datatools.hadoop.hive.connectivity.hiveDriverTemplate=true
+org.eclipse.datatools.enablement.ibm.db2.luw.driverTemplate=true
+org.eclipse.datatools.enablement.ibm.db2.luw.other.driverTemplate=true
+com.teradata.datatools.asterax.connectivity.asterAXDriverTemplate=true
+com.teradata.datatools.hadoop.hortonworks.connectivity.hiveDriverTemplate=true
