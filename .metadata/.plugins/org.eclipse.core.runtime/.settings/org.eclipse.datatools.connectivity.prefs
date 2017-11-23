@@ -1,0 +1,14 @@
+com.teradata.datatools.asterax.connectivity.asterAXDriverTemplate=true
+com.teradata.datatools.asterdata.connectivity.asterdataDriverTemplate=true
+com.teradata.datatools.hadoop.cloudera.connectivity.clouderaDriverTemplate=true
+com.teradata.datatools.hadoop.cloudera.connectivity.clouderaPrestoDriverTemplate=true
+com.teradata.datatools.hadoop.hive.connectivity.hiveDriverTemplate=true
+com.teradata.datatools.hadoop.hortonworks.connectivity.hiveDriverTemplate=true
+com.teradata.datatools.hadoop.hortonworks.connectivity.prestoDriverTemplate=true
+eclipse.preferences.version=1
+org.eclipse.datatools.connectivity.db.teradata.driverTemplate_13=true
+org.eclipse.datatools.enablement.ibm.db2.luw.driverTemplate=true
+org.eclipse.datatools.enablement.ibm.db2.luw.jdbc4.driverTemplate=true
+org.eclipse.datatools.enablement.ibm.db2.luw.jdbc4.kerberosDriverTemplate=true
+org.eclipse.datatools.enablement.ibm.db2.luw.kerberosDriverTemplate=true
+org.eclipse.datatools.enablement.ibm.db2.luw.other.driverTemplate=true

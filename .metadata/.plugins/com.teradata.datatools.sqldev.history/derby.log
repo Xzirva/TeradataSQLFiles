@@ -1,0 +1,6 @@
+----------------------------------------------------------------
+2017-11-23 12:10:35.798 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.6.1.0 - (938214): instance a816c00e-015f-e8c9-6cf8-00003ac7270e 
+on database directory C:\Users\ysoh2\workspace-studio\.metadata\.plugins\com.teradata.datatools.sqldev.history\History   with class loader org.eclipse.osgi.internal.loader.EquinoxClassLoader@317adc34[com.teradata.datatools.sqldev.history:16.10.1.201708101349(id=93)]
+
+Database Class Loader started - derby.database.classpath=''
