@@ -35,7 +35,7 @@ drop index T_VIDEOFACTS_PK;
 drop table T_VIDEOFACTS;
 
 */
-drop table prdwa17_target.TAGS;
+
 drop table prdwa17_target.T_VIDEO;
 drop table prdwa17_target.T_TIME;
 drop table prdwa17_target.T_VIDEOCOMMENT;
@@ -43,11 +43,6 @@ drop table prdwa17_target.T_VIDEOFACTS;
 /*==============================================================*/
 /* Table : TAGS                                                 */
 /*==============================================================*/
-create dimension table prdwa17_target.TAGS (
-   CODE_TAG             INT4                 not null,
-   TAG                  VARCHAR(10)           null,
-   primary key (CODE_TAG)
-);
 
 
 /*==============================================================*/
