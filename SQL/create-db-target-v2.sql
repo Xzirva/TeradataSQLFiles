@@ -117,7 +117,9 @@ CODE_VIDEO
 /*==============================================================*/
 /* Table : T_VIDEOCOMMENT                                       */
 /*==============================================================*/
+
 create fact table prdwa17_target.T_VIDEOCOMMENT (
+
    CODE_VIDEOCOMMENT	INT4				not null,
    CODE_VIDEO           INT4                 not null,
    T_ACTUALDATE         VARCHAR(25)          not null,
