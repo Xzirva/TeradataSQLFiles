@@ -43,7 +43,7 @@ drop table prdwa17_target.T_VIDEOFACTS;
 /*==============================================================*/
 /* Table : TAGS                                                 */
 /*==============================================================*/
-create table prdwa17_target.TAGS (
+create dimension table prdwa17_target.TAGS (
    CODE_TAG             INT4                 not null,
    TAG                  VARCHAR(10)           null,
    primary key (CODE_TAG)
@@ -60,7 +60,7 @@ CODE_TAG
 /*==============================================================*/
 /* Table : T_TIME                                               */
 /*==============================================================*/
-create table prdwa17_target.T_TIME (
+create dimension table prdwa17_target.T_TIME (
    T_ACTUALDATE         VARCHAR(25)                 not null,
    T_YEAR               INT2                 null,
    T_MONTH              INT2                 null,
@@ -86,7 +86,7 @@ T_ACTUALDATE
 /*==============================================================*/
 /* Table : T_VIDEO                                              */
 /*==============================================================*/
-create table prdwa17_target.T_VIDEO (
+create dimension table prdwa17_target.T_VIDEO (
    CODE_VIDEO           INT4                 not null,
    T_TITLE              TEXT                 null,
    T_VIDEOID            VARCHAR(11)          null,
@@ -117,7 +117,7 @@ CODE_VIDEO
 /*==============================================================*/
 /* Table : T_VIDEOCOMMENT                                       */
 /*==============================================================*/
-create table prdwa17_target.T_VIDEOCOMMENT (
+create fact table prdwa17_target.T_VIDEOCOMMENT (
    CODE_VIDEOCOMMENT	INT4				not null,
    CODE_VIDEO           INT4                 not null,
    T_ACTUALDATE         VARCHAR(25)          not null,
@@ -161,7 +161,7 @@ T_ACTUALDATE
 /*==============================================================*/
 /* Table : T_VIDEOFACTS                                         */
 /*==============================================================*/
-create table prdwa17_target.T_VIDEOFACTS (
+create fact table prdwa17_target.T_VIDEOFACTS (
    CODE_VIDEOFACT		INT4                not null,
    CODE_VIDEO           INT4                 not null,
    T_ACTUALDATE         VARCHAR(25)                not null,
