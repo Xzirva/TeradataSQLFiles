@@ -1,0 +1,1 @@
+select regexp_replace('https://www.youtube.com/watch?v=-pDmQKv2T9o', 'https:.+', ' ') from prdwa17_staging.channels;

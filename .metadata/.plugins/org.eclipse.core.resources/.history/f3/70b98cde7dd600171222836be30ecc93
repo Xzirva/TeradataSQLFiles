@@ -1,0 +1,6 @@
+CREATE TABLE prdwa17_staging.channels_backup distribute by hash(screenshot) as
+select * from prdwa17_staging.channels;
+CREATE TABLE prdwa17_staging.videos_backup distribute by hash(id) as
+select * from prdwa17_staging.channels;
+CREATE TABLE prdwa17_staging.videoscomments_backup distribute by hash(id) as
+select * from prdwa17_staging.channels;

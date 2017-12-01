@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="Teradata export file format wizard page">
+		<item value="true" key="First row"/>
+		<item value="255,100,100,255,2147483647,29,20,20,20,20,20,10,255,255,255,29" key="Fixed Width delimiter"/>
+		<item value="Comma" key="Column delimiter"/>
+		<item value="&quot;" key="String delimiter"/>
+		<item value="UTF-8" key="Encoding"/>
+		<item value="Delimited Text" key="File type"/>
+	</section>
+</section>

@@ -1,0 +1,31 @@
+--SELECT "screenshot", "id", "channelid", "title", "description", "publishedat", "viewcount", "commentcount", "likecount", "dislikecount", "favoritecount", "categoryid", "topiccategory_1", "topiccategory_2", "topiccategory_3", "fetchedat" FROM "prdwa17_staging"."videos";
+create table prdwa17_staging.video_title_tokens(id VARCHAR(100) PRIMARY KEY, 
+token VARCHAR(255));
+
+--insert into prdwa17_staging.video_title_tokens
+/*CREATE VIEW prdwa17_staging.title_view AS
+SELECT id || '-§-' || title as r_id, * FROM prdwa17_staging.videos;
+select * from prdwa17_staging.title_view;*/
+
+select id, title, LTRIM(ngram, ''''), n frequency from (
+	SELECT * FROM nGram (
+	ON (select * from prdwa17_staging.videos limit 100)
+	Text_Column ('title')
+	Delimiter (' ')
+	Grams ('1')
+	Overlapping ('false')
+	Case_insensitive ('true')
+	Punctuation ('\[".,?:;/*\-\+\!\|]')
+	--Reset ('\[.,?\!\]')
+	Accumulate ('id', 'title'))
+	order by id, title
+	) AS res
+;
+
+create table prdwa17_staging.videos_descriptions(id VARCHAR(100) PRIMARY KEY, description TEXT);
+
+insert into prdwa17_staging.videos_descriptions
+select id, description from prdwa17_staging.videos;
+
+--create table prdwa17_staging.tfidf_videos_titles(id VARCHAR(100), title VARCHAR(255), word VARCHAR(255));
+-----------------------------------------------------------------------------------------

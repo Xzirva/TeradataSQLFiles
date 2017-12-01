@@ -1,0 +1,6 @@
+create table prdwa17_staging.videos_seven_years distribute by hash(channelid) as
+select * from prdwa17_staging.videos;
+create table prdwa17_staging.videos_seven_years_backup distribute by hash(channelid) as
+select * from prdwa17_staging.videos;
+select count(*) from prdwa17_staging.videos_seven_years_backup;
+select regexp_replace('', '(http.|www.)+', ' ') from prdwa17_staging.videos;

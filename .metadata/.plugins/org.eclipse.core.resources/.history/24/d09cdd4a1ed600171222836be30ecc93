@@ -1,0 +1,14 @@
+create table prdwa17_staging.videos_seven_years distribute by hash(channelid) as
+select * from prdwa17_staging.videos;
+create table prdwa17_staging.videos_seven_years_backup distribute by hash(channelid) as
+select * from prdwa17_staging.videos;
+select count(*) from prdwa17_staging.videos_seven_years_backup;
+
+-- Cleaning description: Cleaning title: Removing urls
+update prdwa17_staging.videos_seven_years 
+set description = regexp_replace(description, '(http.+?|www.+?) ', ' ');
+
+-- Cleaning title: Removing urls
+update prdwa17_staging.videos_seven_years 
+set title = regexp_replace(title, '(http.+?|www.+?) ', ' ');
+

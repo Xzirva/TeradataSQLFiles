@@ -1,1 +1,0 @@
- CREATE TABLE prdwa17_staging.YouTubeTags ( 	id INT PRIMARY KEY, 	title VARCHAR(50), 	videoId VARCHAR(50) );
