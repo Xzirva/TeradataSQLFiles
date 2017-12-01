@@ -128,9 +128,11 @@ create table prdwa17_target.T_VIDEOCOMMENT (
    T_AUTHOR             INT8                 null,
    T_ISPUBLICCOMMENTTHREAD BOOL                 null,
    T_IDCOMMENTTHREAD    VARCHAR(11)          null,
+   T_LIKECOUNT INT8 null,
    primary key (CODE_VIDEOCOMMENT)
 )
 DISTRIBUTE BY HASH(CODE_VIDEOCOMMENT)
+PARTITION BY LIST (CODE_VIDEO)
 STORAGE ROW
 COMPRESS LOW;
 
@@ -165,14 +167,14 @@ create table prdwa17_target.T_VIDEOFACTS (
    CODE_VIDEO           INT4                 not null,
    T_ACTUALDATE         VARCHAR(25)                not null,
    CODE_TAG             INT4                 not null,
-   T_CHANNELCOMMENTSCOUNT INT4                 null,
-   T_CHANNELSUBSCRIBERCOUNT INT4                 null,
-   T_CHANNELVIDEOCOUNT  INT4                 null,
-   T_COMMENTCOUNT       INT4                 null,
-   T_LIKECOUNT          INT4                 null,
-   T_DISLIKECOUNT       INT4                 null,
-   T_VIEWCOUNT          INT4                 null,
-   T_FAVORITECOUNT      INT4                 null,
+   T_CHANNELCOMMENTSCOUNT BIGINT                 null,
+   T_CHANNELSUBSCRIBERCOUNT BIGINT                 null,
+   T_CHANNELVIDEOCOUNT  BIGINT                 null,
+   T_COMMENTCOUNT       BIGINT                 null,
+   T_LIKECOUNT          BIGINT                 null,
+   T_DISLIKECOUNT       BIGINT                 null,
+   T_VIEWCOUNT          BIGINT                 null,
+   T_FAVORITECOUNT      BIGINT                 null,
    primary key (CODE_VIDEOFACT)
 )
 DISTRIBUTE BY HASH(CODE_VIDEOFACT)
