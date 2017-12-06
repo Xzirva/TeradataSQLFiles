@@ -82,7 +82,7 @@ T_ACTUALDATE
 /* Table : T_VIDEO                                              */
 /*==============================================================*/
 create dimension table prdwa17_target.T_VIDEO (
-   CODE_VIDEO           INT4                 not null,
+   CODE_VIDEO           INT4               not null,
    T_TITLE              TEXT                 null,
    T_VIDEOID            VARCHAR(11)          null,
    T_DESCRIPTION        TEXT                 null,
@@ -115,9 +115,9 @@ CODE_VIDEO
 
 create fact table prdwa17_target.T_VIDEOCOMMENT (
 
-   CODE_VIDEOCOMMENT	INT4				not null,
+   CODE_VIDEOCOMMENT	 	VARCHAR(25)		not null,/* prdwa17_staging.videosComments.screenshot*/
    CODE_VIDEO           INT4                 not null,
-   T_ACTUALDATE         VARCHAR(25)          not null,
+   T_ACTUALDATE         VARCHAR(25)           not null,
    CODE_COMMENT         INT4                 not null,
    T_COMMENTID          VARCHAR(11)          null,
    T_TEXT_DISPLAY       TEXT                 null,
@@ -159,9 +159,9 @@ T_ACTUALDATE
 /* Table : T_VIDEOFACTS                                         */
 /*==============================================================*/
 create fact table prdwa17_target.T_VIDEOFACTS (
-   CODE_VIDEOFACT		INT4                not null,
-   CODE_VIDEO           INT4                 not null,
-   T_ACTUALDATE         VARCHAR(25)                not null,
+   CODE_VIDEOFACT		   VARCHAR(25)    not null,/*prdwa17_staging.videos.screenshot*/
+   CODE_VIDEO           INT4                not null,
+   T_ACTUALDATE         VARCHAR(25)               not null,
    CODE_TAG             INT4                 not null,
    T_CHANNELCOMMENTSCOUNT BIGINT                 null,
    T_CHANNELSUBSCRIBERCOUNT BIGINT                 null,
