@@ -82,15 +82,15 @@ T_ACTUALDATE
 /* Table : T_VIDEO                                              */
 /*==============================================================*/
 create dimension table prdwa17_target.T_VIDEO (
-   CODE_VIDEO           INT4               not null,
-   T_TITLE              TEXT                 null,
+   CODE_VIDEO           VARCHAR(25)              not null,
+   T_TITLE              VARCHAR(255)                null,
    T_VIDEOID            VARCHAR(11)          null,
    T_DESCRIPTION        TEXT                 null,
    T_CUSTOMURL          TEXT                 null,
    T_CATEGORY           TEXT                 null,
    T_PUBLISHEDAT        DATE                 null,
    T_DURATION           INT4                 null,
-   T_CHANNELID          VARCHAR(11)          null,
+   T_CHANNELID          VARCHAR(100)          null,
    T_CHANNELTITLE       TEXT                 null,
    T_CHANNELDESCRIPTION TEXT                 null,
    T_CHANNELCUSTOMURL   TEXT                 null,
