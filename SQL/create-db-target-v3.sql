@@ -56,7 +56,7 @@ CODE_TAG
 /* Table : T_TIME                                               */
 /*==============================================================*/
 create dimension table prdwa17_target.T_TIME (
-   T_ACTUALDATE         VARCHAR(25)                 not null,
+   T_ACTUALDATE         TIMESTAMP                 not null,
    T_YEAR               INT2                 null,
    T_MONTH              INT2                 null,
    T_WEEK               INT2                 null,
@@ -82,21 +82,21 @@ T_ACTUALDATE
 /* Table : T_VIDEO                                              */
 /*==============================================================*/
 create dimension table prdwa17_target.T_VIDEO (
-   CODE_VIDEO           VARCHAR(25)              not null,
+   CODE_VIDEO           VARCHAR(255)              not null,
    T_TITLE              VARCHAR(255)                null,
-   T_VIDEOID            VARCHAR(11)          null,
+   T_VIDEOID            VARCHAR(100)          null,
    T_DESCRIPTION        TEXT                 null,
    T_CUSTOMURL          TEXT                 null,
    T_CATEGORY           TEXT                 null,
-   T_PUBLISHEDAT        DATE                 null,
+   T_PUBLISHEDAT        TIMESTAMP                 null,
    T_DURATION           INT4                 null,
    T_CHANNELID          VARCHAR(100)          null,
-   T_CHANNELTITLE       TEXT                 null,
+   T_CHANNELTITLE       VARCHAR(255)                null,
    T_CHANNELDESCRIPTION TEXT                 null,
    T_CHANNELCUSTOMURL   TEXT                 null,
-   T_TOPICCATEGORIE1    TEXT                 null,
-   T_TOPICCATEGORIE2    TEXT                 null,
-   T_TOPICCATEGORIE3    TEXT                 null,
+   T_TOPICCATEGORIE1    VARCHAR(255)                null,
+   T_TOPICCATEGORIE2    VARCHAR(255)                 null,
+   T_TOPICCATEGORIE3    VARCHAR(255)                null,
    primary key (CODE_VIDEO)
 )
 DISTRIBUTE BY REPLICATION;
@@ -115,17 +115,17 @@ CODE_VIDEO
 
 create fact table prdwa17_target.T_VIDEOCOMMENT (
 
-   CODE_VIDEOCOMMENT	 	VARCHAR(25)		not null,/* prdwa17_staging.videosComments.screenshot*/
-   CODE_VIDEO           INT4                 not null,
-   T_ACTUALDATE         VARCHAR(25)           not null,
-   CODE_COMMENT         INT4                 not null,
-   T_COMMENTID          VARCHAR(11)          null,
+   CODE_VIDEOCOMMENT	 	VARCHAR(255)		not null,/* prdwa17_staging.videosComments.screenshot*/
+   CODE_VIDEO           VARCHAR(255)                 not null,
+   T_ACTUALDATE         TIMESTAMP            not null,
+   CODE_COMMENT         INT4                 null,
+   T_COMMENTID          VARCHAR(100)          null,
    T_TEXT_DISPLAY       TEXT                 null,
    T_TEXT_ORIGINAL      TEXT                 null,
-   T_AUTHOR             INT8                 null,
+   T_AUTHOR             VARCHAR(100)                 null,
    T_ISPUBLICCOMMENTTHREAD BOOL                 null,
-   T_IDCOMMENTTHREAD    VARCHAR(11)          null,
-   T_LIKECOUNT INT8 null,
+   T_IDCOMMENTTHREAD    VARCHAR(100)          null,
+   T_LIKECOUNT INT null,
    primary key (CODE_VIDEOCOMMENT)
 )
 DISTRIBUTE BY HASH(CODE_VIDEOCOMMENT)
@@ -159,10 +159,10 @@ T_ACTUALDATE
 /* Table : T_VIDEOFACTS                                         */
 /*==============================================================*/
 create fact table prdwa17_target.T_VIDEOFACTS (
-   CODE_VIDEOFACT		   VARCHAR(25)    not null,/*prdwa17_staging.videos.screenshot*/
-   CODE_VIDEO           INT4                not null,
-   T_ACTUALDATE         VARCHAR(25)               not null,
-   CODE_TAG             INT4                 not null,
+   CODE_VIDEOFACT		   VARCHAR(255)    not null,/*prdwa17_staging.videos.screenshot*/
+   CODE_VIDEO           VARCHAR(255)                 not null,
+   T_ACTUALDATE         TIMESTAMP               not null,
+   CODE_TAG             INT4                 null,
    T_CHANNELCOMMENTSCOUNT BIGINT                 null,
    T_CHANNELSUBSCRIBERCOUNT BIGINT                 null,
    T_CHANNELVIDEOCOUNT  BIGINT                 null,
