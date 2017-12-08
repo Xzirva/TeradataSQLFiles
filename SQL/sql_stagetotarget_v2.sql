@@ -26,25 +26,25 @@ INSERT INTO "prdwa17_target"."t_video"
  "t_channeltitle", 
  "t_channeldescription", 
  "t_topiccategorie1", 
- "t_topiccategorie2", 
+ "t_topiccategorie2",
  "t_topiccategorie3")
- SELECT  "prdwa17_staging"."videos"."screenshot",
- "prdwa17_staging"."videos"."title",
- "prdwa17_staging"."videos"."id", 
- "prdwa17_staging"."videos"."description",
- "prdwa17_staging"."videos"."publishedat", 
- "prdwa17_staging"."channels"."id", 
- "prdwa17_staging"."channels"."title",
- "prdwa17_staging"."channels"."description", 
- "prdwa17_staging"."videos"."topiccategory_1", 
- "prdwa17_staging"."videos"."topiccategory_2", 
- "prdwa17_staging"."videos"."topiccategory_3"
+ SELECT  "prdwa17_staging"."videos_test"."id" || to_char("prdwa17_staging"."videos_test"."fetchedat",'YYYY-Mon-DD HH12:MI:SS'),
+ "prdwa17_staging"."videos_test"."title",
+ "prdwa17_staging"."videos_test"."id", 
+ "prdwa17_staging"."videos_test"."description",
+ "prdwa17_staging"."videos_test"."publishedat", 
+ "prdwa17_staging"."channels_test"."id", 
+ "prdwa17_staging"."channels_test"."title",
+ "prdwa17_staging"."channels_test"."description", 
+ "prdwa17_staging"."videos_test"."topiccategory_1", 
+ "prdwa17_staging"."videos_test"."topiccategory_2", 
+ "prdwa17_staging"."videos_test"."topiccategory_3"
 
- FROM "prdwa17_staging"."channels"
- INNER JOIN "prdwa17_staging"."videos"
- on "prdwa17_staging"."channels"."id" = "prdwa17_staging"."videos"."channelid"
- WHERE "prdwa17_staging"."channels"."fetchedat" = actualdate
- AND "prdwa17_staging"."videos"."fetchedat" = actualdate;
+ FROM "prdwa17_staging"."channels_test"
+ INNER JOIN "prdwa17_staging"."videos_test"
+ on "prdwa17_staging"."channels_test"."id" = "prdwa17_staging"."videos_test"."channelid"
+ WHERE "prdwa17_staging"."channels_test"."fetchedat" = actualdate
+ AND "prdwa17_staging"."videos_test"."fetchedat" = actualdate;
 
 --table de fiat t-videofacts
  INSERT INTO "prdwa17_target"."t_videofacts" 
