@@ -1,1 +1,0 @@
-select regexp_replace('', '(http.|www.)+', ' ') from prdwa17_staging.videos;

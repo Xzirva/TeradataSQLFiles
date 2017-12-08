@@ -1,0 +1,5 @@
+TRUNCATE prdwa17_staging.videos;
+TRUNCATE prdwa17_staging.channels;
+TRUNCATE prdwa17_staging.videosComments;
+
+select screenshot from prdwa17_staging.videoscomments;

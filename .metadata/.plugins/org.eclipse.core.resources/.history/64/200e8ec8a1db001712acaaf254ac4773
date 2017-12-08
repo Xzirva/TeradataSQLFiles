@@ -1,0 +1,6 @@
+TRUNCATE prdwa17_staging.videos_test;
+TRUNCATE prdwa17_staging.channels_test;
+TRUNCATE prdwa17_staging.videosComments_test;
+
+select id, count(id) from prdwa17_staging.videosComments_test where videoid = '8aItBcYDNZs' group by id;
+--select * from prdwa17_staging.videosComments_test where id = 'UgzcyDFkjuHDhn-R_np4AaABAg';

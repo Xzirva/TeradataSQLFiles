@@ -1,0 +1,7 @@
+-- Cleaning description: Removing urls
+update prdwa17_staging.videos_descriptions
+set description = regexp_replace(description, '(http.+?|www.+?) ', ' ');
+
+-- Cleaning title: Removing urls
+update prdwa17_staging.videos_titles 
+set title = regexp_replace(title, '(http.+?|www.+?) ', ' ');

@@ -2006,3 +2006,591 @@ java.sql.SQLException: [AsterData][ASTERJDBCDSII](34) : Failed to connect to 192
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
 Caused by: com.asterdata.ncluster.jdbc.core.MuleException: [AsterData][ASTERJDBCDSII](34) : Failed to connect to 192.168.100.220. Please check the host address. ()
 	... 30 more
+!SESSION 2017-12-06 19:51:55.394 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_151
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.ui.navigator 2 0 2017-12-06 19:52:02.221
+!MESSAGE Warning: popupMenuId of "org.eclipse.datatools.connectivity.DataSourceExplorerNavigator" was overridden: old value = "org.eclipse.datatools.connectivity.DataSourceExplorerNavigator.menu", new value = "org.eclipse.datatools.connectivity.DataSourceExplorerNavigator.menu".
+
+!ENTRY org.eclipse.ui.navigator 2 0 2017-12-06 19:52:02.221
+!MESSAGE Warning: popupMenuId of "org.eclipse.ui.navigator.ProjectExplorer" was overridden: old value = "org.eclipse.ui.navigator.ProjectExplorer#PopupMenu", new value = "org.eclipse.ui.navigator.ProjectExplorer#PopupMenu".
+
+!ENTRY org.eclipse.datatools.connectivity.sqm.core 4 4 2017-12-06 23:11:48.612
+!MESSAGE java.sql.SQLException
+!STACK 0
+java.sql.SQLException: [AsterData][ASTERJDBCDSII](34) : Database connection broken ()
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterQueryExecutor.mulePrepare(Unknown Source)
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterQueryExecutor.prepare(Unknown Source)
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterQueryExecutor.<init>(Unknown Source)
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterDataEngine.prepare(Unknown Source)
+	at com.simba.jdbc.common.SStatement.executeNoParams(Unknown Source)
+	at com.simba.jdbc.common.SStatement.executeQuery(Unknown Source)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:207)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:207)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.StatementAdapter.executeQuery(StatementAdapter.java:73)
+	at com.teradata.datatools.util.db.DBAccess.getSelectResult(DBAccess.java:80)
+	at com.teradata.datatools.util.db.DBAccess.getListMapResult(DBAccess.java:141)
+	at com.teradata.datatools.util.db.DBAccess.getListMapResult(DBAccess.java:180)
+	at com.teradata.datatools.util.db.DBAccess.getListMapResult(DBAccess.java:196)
+	at com.teradata.datatools.util.db.QueryRunner.runList(QueryRunner.java:262)
+	at com.teradata.datatools.util.db.QueryRunner.executeListQuery(QueryRunner.java:125)
+	at com.teradata.datatools.util.dao.JdbcDAO.runQueries(JdbcDAO.java:824)
+	at com.teradata.datatools.dao.asterdata.AsterDataDAO.getTablesAndViews(AsterDataDAO.java:203)
+	at com.teradata.datatools.asterdata.catalog.AsterDataTableLoader.loadTables(AsterDataTableLoader.java:255)
+	at com.teradata.datatools.asterdata.catalog.AsterDataCatalogSchema.loadTables(AsterDataCatalogSchema.java:264)
+	at com.teradata.datatools.asterdata.catalog.AsterDataCatalogSchema.getTables(AsterDataCatalogSchema.java:221)
+	at org.eclipse.datatools.modelbase.sql.schema.impl.SchemaImpl.eGet(SchemaImpl.java:597)
+	at org.eclipse.emf.ecore.impl.BasicEObjectImpl.eGet(BasicEObjectImpl.java:1011)
+	at org.eclipse.emf.ecore.impl.BasicEObjectImpl.eGet(BasicEObjectImpl.java:1003)
+	at org.eclipse.emf.ecore.impl.BasicEObjectImpl.eGet(BasicEObjectImpl.java:998)
+	at org.eclipse.datatools.connectivity.sqm.server.internal.ui.explorer.providers.content.layout.vnode.ServerExplorerVNodeContentProviderNav.getSchemaChildren(ServerExplorerVNodeContentProviderNav.java:250)
+	at org.eclipse.datatools.connectivity.sqm.server.internal.ui.explorer.providers.content.layout.vnode.ServerExplorerVNodeContentProviderNav.displayTableNodeChildren(ServerExplorerVNodeContentProviderNav.java:187)
+	at org.eclipse.datatools.connectivity.sqm.server.internal.ui.explorer.providers.content.layout.AbstractOnDemandContentProviderNav.getChildren(AbstractOnDemandContentProviderNav.java:173)
+	at org.eclipse.datatools.connectivity.sqm.server.internal.ui.explorer.providers.content.layout.AbstractOnDemandContentProviderNav.getChildren(AbstractOnDemandContentProviderNav.java:243)
+	at org.eclipse.datatools.connectivity.sqm.server.internal.ui.explorer.providers.content.layout.AbstractLayoutProviderNav.getChildren(AbstractLayoutProviderNav.java:85)
+	at org.eclipse.datatools.connectivity.sqm.server.internal.ui.explorer.providers.content.impl.ServerExplorerContentProviderNav.load(ServerExplorerContentProviderNav.java:153)
+	at org.eclipse.datatools.connectivity.sqm.server.internal.ui.explorer.loading.LoadingJob.run(LoadingJob.java:43)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: com.asterdata.ncluster.jdbc.core.MuleException: [AsterData][ASTERJDBCDSII](34) : Database connection broken ()
+	... 32 more
+
+!ENTRY org.eclipse.datatools.connectivity.sqm.core 4 4 2017-12-07 00:02:11.184
+!MESSAGE java.sql.SQLException
+!STACK 0
+java.sql.SQLException: [AsterData][ASTERJDBCDSII](34) : Database connection broken ()
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterQueryExecutor.mulePrepare(Unknown Source)
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterQueryExecutor.prepare(Unknown Source)
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterQueryExecutor.<init>(Unknown Source)
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterDataEngine.prepare(Unknown Source)
+	at com.simba.jdbc.common.SStatement.executeNoParams(Unknown Source)
+	at com.simba.jdbc.common.SStatement.executeQuery(Unknown Source)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:207)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:207)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.StatementAdapter.executeQuery(StatementAdapter.java:73)
+	at com.teradata.datatools.util.db.DBAccess.getSelectResult(DBAccess.java:80)
+	at com.teradata.datatools.util.db.DBAccess.getListMapResult(DBAccess.java:141)
+	at com.teradata.datatools.util.db.DBAccess.getListMapResult(DBAccess.java:180)
+	at com.teradata.datatools.util.db.DBAccess.getListMapResult(DBAccess.java:196)
+	at com.teradata.datatools.util.db.QueryRunner.runList(QueryRunner.java:262)
+	at com.teradata.datatools.util.db.QueryRunner.executeListQuery(QueryRunner.java:125)
+	at com.teradata.datatools.util.dao.JdbcDAO.runQueries(JdbcDAO.java:824)
+	at com.teradata.datatools.dao.asterdata.AsterDataDAO.getTablesAndViews(AsterDataDAO.java:203)
+	at com.teradata.datatools.asterdata.catalog.AsterDataTableLoader.loadTables(AsterDataTableLoader.java:255)
+	at com.teradata.datatools.asterdata.catalog.AsterDataCatalogSchema.loadTables(AsterDataCatalogSchema.java:264)
+	at com.teradata.datatools.asterdata.catalog.AsterDataCatalogSchema.getTables(AsterDataCatalogSchema.java:221)
+	at org.eclipse.datatools.modelbase.sql.schema.impl.SchemaImpl.eGet(SchemaImpl.java:597)
+	at org.eclipse.emf.ecore.impl.BasicEObjectImpl.eGet(BasicEObjectImpl.java:1011)
+	at org.eclipse.emf.ecore.impl.BasicEObjectImpl.eGet(BasicEObjectImpl.java:1003)
+	at org.eclipse.emf.ecore.impl.BasicEObjectImpl.eGet(BasicEObjectImpl.java:998)
+	at org.eclipse.datatools.connectivity.sqm.server.internal.ui.explorer.providers.content.layout.vnode.ServerExplorerVNodeContentProviderNav.getSchemaChildren(ServerExplorerVNodeContentProviderNav.java:250)
+	at org.eclipse.datatools.connectivity.sqm.server.internal.ui.explorer.providers.content.layout.vnode.ServerExplorerVNodeContentProviderNav.displayTableNodeChildren(ServerExplorerVNodeContentProviderNav.java:187)
+	at org.eclipse.datatools.connectivity.sqm.server.internal.ui.explorer.providers.content.layout.AbstractOnDemandContentProviderNav.getChildren(AbstractOnDemandContentProviderNav.java:173)
+	at org.eclipse.datatools.connectivity.sqm.server.internal.ui.explorer.providers.content.layout.AbstractOnDemandContentProviderNav.getChildren(AbstractOnDemandContentProviderNav.java:243)
+	at org.eclipse.datatools.connectivity.sqm.server.internal.ui.explorer.providers.content.layout.AbstractLayoutProviderNav.getChildren(AbstractLayoutProviderNav.java:85)
+	at org.eclipse.datatools.connectivity.sqm.server.internal.ui.explorer.providers.content.impl.ServerExplorerContentProviderNav.load(ServerExplorerContentProviderNav.java:153)
+	at org.eclipse.datatools.connectivity.sqm.server.internal.ui.explorer.loading.LoadingJob.run(LoadingJob.java:43)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: com.asterdata.ncluster.jdbc.core.MuleException: [AsterData][ASTERJDBCDSII](34) : Database connection broken ()
+	... 32 more
+
+!ENTRY org.eclipse.datatools.connectivity.sqm.core 4 4 2017-12-07 01:15:12.475
+!MESSAGE java.sql.SQLException
+!STACK 0
+java.sql.SQLException: [AsterData][ASTERJDBCDSII](34) : Database connection broken ()
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterQueryExecutor.mulePrepare(Unknown Source)
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterQueryExecutor.prepare(Unknown Source)
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterQueryExecutor.<init>(Unknown Source)
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterDataEngine.prepare(Unknown Source)
+	at com.simba.jdbc.common.SStatement.executeNoParams(Unknown Source)
+	at com.simba.jdbc.common.SStatement.executeQuery(Unknown Source)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:207)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:207)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.StatementAdapter.executeQuery(StatementAdapter.java:73)
+	at com.teradata.datatools.asterdata.sqltools.handlers.RowCountActionDelegate.doRowCount(RowCountActionDelegate.java:130)
+	at com.teradata.datatools.asterdata.sqltools.handlers.RowCountActionDelegate.doRun(RowCountActionDelegate.java:218)
+	at com.teradata.datatools.dtp.util.actions.AbstractRunWithHourglassActionDelegate$1.run(AbstractRunWithHourglassActionDelegate.java:97)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at com.teradata.datatools.dtp.util.actions.AbstractRunWithHourglassActionDelegate.runWithHourglass(AbstractRunWithHourglassActionDelegate.java:129)
+	at com.teradata.datatools.dtp.util.actions.AbstractRunWithHourglassActionDelegate.run(AbstractRunWithHourglassActionDelegate.java:95)
+	at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:247)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:565)
+	at org.eclipse.jface.action.ActionContributionItem.lambda$4(ActionContributionItem.java:397)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4410)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4228)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3816)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at com.teradata.studio.StudioApplication.start(StudioApplication.java:53)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+Caused by: com.asterdata.ncluster.jdbc.core.MuleException: [AsterData][ASTERJDBCDSII](34) : Database connection broken ()
+	... 44 more
+
+!ENTRY org.eclipse.datatools.connectivity.sqm.core 4 4 2017-12-07 03:28:34.581
+!MESSAGE java.sql.SQLException
+!STACK 0
+java.sql.SQLException: [AsterData][ASTERJDBCDSII](34) : Database connection broken ()
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterQueryExecutor.mulePrepare(Unknown Source)
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterQueryExecutor.prepare(Unknown Source)
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterQueryExecutor.<init>(Unknown Source)
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterDataEngine.prepare(Unknown Source)
+	at com.simba.jdbc.common.SStatement.executeNoParams(Unknown Source)
+	at com.simba.jdbc.common.SStatement.executeQuery(Unknown Source)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:207)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:207)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.StatementAdapter.executeQuery(StatementAdapter.java:73)
+	at com.teradata.datatools.asterdata.sqltools.handlers.RowCountActionDelegate.doRowCount(RowCountActionDelegate.java:130)
+	at com.teradata.datatools.asterdata.sqltools.handlers.RowCountActionDelegate.doRun(RowCountActionDelegate.java:218)
+	at com.teradata.datatools.dtp.util.actions.AbstractRunWithHourglassActionDelegate$1.run(AbstractRunWithHourglassActionDelegate.java:97)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at com.teradata.datatools.dtp.util.actions.AbstractRunWithHourglassActionDelegate.runWithHourglass(AbstractRunWithHourglassActionDelegate.java:129)
+	at com.teradata.datatools.dtp.util.actions.AbstractRunWithHourglassActionDelegate.run(AbstractRunWithHourglassActionDelegate.java:95)
+	at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:247)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:565)
+	at org.eclipse.jface.action.ActionContributionItem.lambda$4(ActionContributionItem.java:397)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4410)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4228)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3816)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at com.teradata.studio.StudioApplication.start(StudioApplication.java:53)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+Caused by: com.asterdata.ncluster.jdbc.core.MuleException: [AsterData][ASTERJDBCDSII](34) : Database connection broken ()
+	... 44 more
+!SESSION 2017-12-07 20:47:12.204 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_151
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.ui.navigator 2 0 2017-12-07 20:47:18.592
+!MESSAGE Warning: popupMenuId of "org.eclipse.datatools.connectivity.DataSourceExplorerNavigator" was overridden: old value = "org.eclipse.datatools.connectivity.DataSourceExplorerNavigator.menu", new value = "org.eclipse.datatools.connectivity.DataSourceExplorerNavigator.menu".
+
+!ENTRY org.eclipse.ui.navigator 2 0 2017-12-07 20:47:18.594
+!MESSAGE Warning: popupMenuId of "org.eclipse.ui.navigator.ProjectExplorer" was overridden: old value = "org.eclipse.ui.navigator.ProjectExplorer#PopupMenu", new value = "org.eclipse.ui.navigator.ProjectExplorer#PopupMenu".
+
+!ENTRY org.eclipse.datatools.connectivity 2 -1 2017-12-07 20:48:43.815
+!MESSAGE Error creating SQL Model Connection connection to PRDW - Aster. (Error: [AsterData][ASTERJDBCDSII](34) ERROR: There are currently not enough vworkers available to execute queries. The cluster may need to be activated through the AMC. Contact your database administrator for further assistance. ())
+!STACK 0
+java.sql.SQLException: [AsterData][ASTERJDBCDSII](34) ERROR: There are currently not enough vworkers available to execute queries. The cluster may need to be activated through the AMC. Contact your database administrator for further assistance. ()
+	at com.asterdata.ncluster.jdbc.dataengine.PSDecoder.getTypeMappings(Unknown Source)
+	at com.asterdata.ncluster.jdbc.core.NClusterConnection.setConnectedPropertyValues(Unknown Source)
+	at com.asterdata.ncluster.jdbc.core.NClusterConnection.connect(Unknown Source)
+	at com.simba.jdbc.common.BaseConnectionFactory.doConnect(Unknown Source)
+	at com.simba.jdbc.common.AbstractDriver.connect(Unknown Source)
+	at com.teradata.datatools.asterdata.connectivity.AsterDataJDBCConnection.makeConnection(AsterDataJDBCConnection.java:212)
+	at com.teradata.datatools.asterdata.connectivity.AsterDataJDBCConnection.createConnection(AsterDataJDBCConnection.java:183)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.internalCreateConnection(DriverConnectionBase.java:105)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.open(DriverConnectionBase.java:54)
+	at com.teradata.datatools.asterdata.connectivity.AsterDataJDBCConnection.<init>(AsterDataJDBCConnection.java:75)
+	at com.teradata.datatools.asterdata.connectivity.AsterDataConnectionFactory.createPooledConnection(AsterDataConnectionFactory.java:106)
+	at com.teradata.datatools.asterdata.connectivity.AsterPooledConnectionFactory.createConnection(AsterPooledConnectionFactory.java:48)
+	at org.apache.commons.dbcp2.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:256)
+	at org.apache.commons.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:861)
+	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:435)
+	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:363)
+	at com.teradata.datatools.connection.pool.ConnectionPoolControl.checkProfile(ConnectionPoolControl.java:305)
+	at com.teradata.datatools.connection.pool.ConnectionPoolControl.getConnection(ConnectionPoolControl.java:408)
+	at com.teradata.datatools.connection.pool.ConnectionHelper.getConnection(ConnectionHelper.java:40)
+	at com.teradata.datatools.connection.services.impl.ConnectionService.getConnection(ConnectionService.java:70)
+	at com.teradata.datatools.asterdata.connectivity.AsterDataConnectionFactory.createConnection(AsterDataConnectionFactory.java:59)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryProvider.createConnection(ConnectionFactoryProvider.java:83)
+	at org.eclipse.datatools.connectivity.internal.ConnectionProfile.createConnection(ConnectionProfile.java:359)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionInfoImpl.initializeJDBCConnection(ConnectionInfoImpl.java:705)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionInfoImpl.<init>(ConnectionInfoImpl.java:690)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionFactory.createConnection(ConnectionFactory.java:38)
+	at org.eclipse.datatools.connectivity.sqm.core.SQMConnectionFactory.createConnection(SQMConnectionFactory.java:45)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionFactory.createConnection(ConnectionFactory.java:59)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryAdapterProvider.createConnection(ConnectionFactoryAdapterProvider.java:114)
+	at org.eclipse.datatools.connectivity.internal.ManagedConnection.createConnection(ManagedConnection.java:179)
+	at org.eclipse.datatools.connectivity.internal.CreateConnectionJob.run(CreateConnectionJob.java:61)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: com.asterdata.ncluster.jdbc.core.MuleException: [AsterData][ASTERJDBCDSII](34) ERROR: There are currently not enough vworkers available to execute queries. The cluster may need to be activated through the AMC. Contact your database administrator for further assistance. ()
+	... 32 more
+
+!ENTRY org.eclipse.datatools.connectivity 4 -1 2017-12-07 20:48:43.890
+!MESSAGE Could not connect to PRDW - Aster.
+!SUBENTRY 1 org.eclipse.datatools.connectivity 2 -1 2017-12-07 20:48:43.890
+!MESSAGE Error creating SQL Model Connection connection to PRDW - Aster. (Error: [AsterData][ASTERJDBCDSII](34) ERROR: There are currently not enough vworkers available to execute queries. The cluster may need to be activated through the AMC. Contact your database administrator for further assistance. ())
+!STACK 0
+java.sql.SQLException: [AsterData][ASTERJDBCDSII](34) ERROR: There are currently not enough vworkers available to execute queries. The cluster may need to be activated through the AMC. Contact your database administrator for further assistance. ()
+	at com.asterdata.ncluster.jdbc.dataengine.PSDecoder.getTypeMappings(Unknown Source)
+	at com.asterdata.ncluster.jdbc.core.NClusterConnection.setConnectedPropertyValues(Unknown Source)
+	at com.asterdata.ncluster.jdbc.core.NClusterConnection.connect(Unknown Source)
+	at com.simba.jdbc.common.BaseConnectionFactory.doConnect(Unknown Source)
+	at com.simba.jdbc.common.AbstractDriver.connect(Unknown Source)
+	at com.teradata.datatools.asterdata.connectivity.AsterDataJDBCConnection.makeConnection(AsterDataJDBCConnection.java:212)
+	at com.teradata.datatools.asterdata.connectivity.AsterDataJDBCConnection.createConnection(AsterDataJDBCConnection.java:183)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.internalCreateConnection(DriverConnectionBase.java:105)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.open(DriverConnectionBase.java:54)
+	at com.teradata.datatools.asterdata.connectivity.AsterDataJDBCConnection.<init>(AsterDataJDBCConnection.java:75)
+	at com.teradata.datatools.asterdata.connectivity.AsterDataConnectionFactory.createPooledConnection(AsterDataConnectionFactory.java:106)
+	at com.teradata.datatools.asterdata.connectivity.AsterPooledConnectionFactory.createConnection(AsterPooledConnectionFactory.java:48)
+	at org.apache.commons.dbcp2.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:256)
+	at org.apache.commons.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:861)
+	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:435)
+	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:363)
+	at com.teradata.datatools.connection.pool.ConnectionPoolControl.checkProfile(ConnectionPoolControl.java:305)
+	at com.teradata.datatools.connection.pool.ConnectionPoolControl.getConnection(ConnectionPoolControl.java:408)
+	at com.teradata.datatools.connection.pool.ConnectionHelper.getConnection(ConnectionHelper.java:40)
+	at com.teradata.datatools.connection.services.impl.ConnectionService.getConnection(ConnectionService.java:70)
+	at com.teradata.datatools.asterdata.connectivity.AsterDataConnectionFactory.createConnection(AsterDataConnectionFactory.java:59)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryProvider.createConnection(ConnectionFactoryProvider.java:83)
+	at org.eclipse.datatools.connectivity.internal.ConnectionProfile.createConnection(ConnectionProfile.java:359)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionInfoImpl.initializeJDBCConnection(ConnectionInfoImpl.java:705)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionInfoImpl.<init>(ConnectionInfoImpl.java:690)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionFactory.createConnection(ConnectionFactory.java:38)
+	at org.eclipse.datatools.connectivity.sqm.core.SQMConnectionFactory.createConnection(SQMConnectionFactory.java:45)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionFactory.createConnection(ConnectionFactory.java:59)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryAdapterProvider.createConnection(ConnectionFactoryAdapterProvider.java:114)
+	at org.eclipse.datatools.connectivity.internal.ManagedConnection.createConnection(ManagedConnection.java:179)
+	at org.eclipse.datatools.connectivity.internal.CreateConnectionJob.run(CreateConnectionJob.java:61)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: com.asterdata.ncluster.jdbc.core.MuleException: [AsterData][ASTERJDBCDSII](34) ERROR: There are currently not enough vworkers available to execute queries. The cluster may need to be activated through the AMC. Contact your database administrator for further assistance. ()
+	... 32 more
+
+!ENTRY org.eclipse.datatools.connectivity.sqm.core 4 4 2017-12-07 21:31:42.365
+!MESSAGE java.sql.SQLException
+!STACK 0
+java.sql.SQLException: [AsterData][ASTERJDBCDSII](34) : Database connection broken ()
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterQueryExecutor.mulePrepare(Unknown Source)
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterQueryExecutor.prepare(Unknown Source)
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterQueryExecutor.<init>(Unknown Source)
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterDataEngine.prepare(Unknown Source)
+	at com.simba.jdbc.common.SStatement.executeNoParams(Unknown Source)
+	at com.simba.jdbc.common.SStatement.executeQuery(Unknown Source)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:207)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:207)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.StatementAdapter.executeQuery(StatementAdapter.java:73)
+	at com.teradata.datatools.asterdata.sqltools.handlers.RowCountActionDelegate.doRowCount(RowCountActionDelegate.java:130)
+	at com.teradata.datatools.asterdata.sqltools.handlers.RowCountActionDelegate.doRun(RowCountActionDelegate.java:218)
+	at com.teradata.datatools.dtp.util.actions.AbstractRunWithHourglassActionDelegate$1.run(AbstractRunWithHourglassActionDelegate.java:97)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at com.teradata.datatools.dtp.util.actions.AbstractRunWithHourglassActionDelegate.runWithHourglass(AbstractRunWithHourglassActionDelegate.java:129)
+	at com.teradata.datatools.dtp.util.actions.AbstractRunWithHourglassActionDelegate.run(AbstractRunWithHourglassActionDelegate.java:95)
+	at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:247)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:565)
+	at org.eclipse.jface.action.ActionContributionItem.lambda$4(ActionContributionItem.java:397)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4410)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4228)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3816)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at com.teradata.studio.StudioApplication.start(StudioApplication.java:53)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+Caused by: com.asterdata.ncluster.jdbc.core.MuleException: [AsterData][ASTERJDBCDSII](34) : Database connection broken ()
+	... 44 more
+!SESSION 2017-12-07 21:32:28.864 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_151
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.ui.navigator 2 0 2017-12-07 21:32:34.517
+!MESSAGE Warning: popupMenuId of "org.eclipse.datatools.connectivity.DataSourceExplorerNavigator" was overridden: old value = "org.eclipse.datatools.connectivity.DataSourceExplorerNavigator.menu", new value = "org.eclipse.datatools.connectivity.DataSourceExplorerNavigator.menu".
+
+!ENTRY org.eclipse.ui.navigator 2 0 2017-12-07 21:32:34.518
+!MESSAGE Warning: popupMenuId of "org.eclipse.ui.navigator.ProjectExplorer" was overridden: old value = "org.eclipse.ui.navigator.ProjectExplorer#PopupMenu", new value = "org.eclipse.ui.navigator.ProjectExplorer#PopupMenu".
+
+!ENTRY org.eclipse.datatools.connectivity.sqm.core 4 4 2017-12-07 23:54:52.313
+!MESSAGE java.sql.SQLException
+!STACK 0
+java.sql.SQLException: [AsterData][ASTERJDBCDSII](34) : Database connection broken ()
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterQueryExecutor.mulePrepare(Unknown Source)
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterQueryExecutor.prepare(Unknown Source)
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterQueryExecutor.<init>(Unknown Source)
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterDataEngine.prepare(Unknown Source)
+	at com.simba.jdbc.common.SStatement.executeNoParams(Unknown Source)
+	at com.simba.jdbc.common.SStatement.executeQuery(Unknown Source)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:207)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:207)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.StatementAdapter.executeQuery(StatementAdapter.java:73)
+	at com.teradata.datatools.asterdata.sqltools.handlers.RowCountActionDelegate.doRowCount(RowCountActionDelegate.java:130)
+	at com.teradata.datatools.asterdata.sqltools.handlers.RowCountActionDelegate.doRun(RowCountActionDelegate.java:218)
+	at com.teradata.datatools.dtp.util.actions.AbstractRunWithHourglassActionDelegate$1.run(AbstractRunWithHourglassActionDelegate.java:97)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at com.teradata.datatools.dtp.util.actions.AbstractRunWithHourglassActionDelegate.runWithHourglass(AbstractRunWithHourglassActionDelegate.java:129)
+	at com.teradata.datatools.dtp.util.actions.AbstractRunWithHourglassActionDelegate.run(AbstractRunWithHourglassActionDelegate.java:95)
+	at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:247)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:565)
+	at org.eclipse.jface.action.ActionContributionItem.lambda$4(ActionContributionItem.java:397)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4410)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4228)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3816)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at com.teradata.studio.StudioApplication.start(StudioApplication.java:53)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+Caused by: com.asterdata.ncluster.jdbc.core.MuleException: [AsterData][ASTERJDBCDSII](34) : Database connection broken ()
+	... 44 more
+
+!ENTRY org.eclipse.datatools.connectivity.sqm.core 4 4 2017-12-08 01:04:52.623
+!MESSAGE java.sql.SQLException
+!STACK 0
+java.sql.SQLException: [AsterData][ASTERJDBCDSII](34) : Database connection broken ()
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterQueryExecutor.mulePrepare(Unknown Source)
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterQueryExecutor.prepare(Unknown Source)
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterQueryExecutor.<init>(Unknown Source)
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterDataEngine.prepare(Unknown Source)
+	at com.simba.jdbc.common.SStatement.executeNoParams(Unknown Source)
+	at com.simba.jdbc.common.SStatement.executeQuery(Unknown Source)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:207)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:207)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.StatementAdapter.executeQuery(StatementAdapter.java:73)
+	at com.teradata.datatools.util.db.DBAccess.getSelectResult(DBAccess.java:80)
+	at com.teradata.datatools.util.db.DBAccess.getListMapResult(DBAccess.java:141)
+	at com.teradata.datatools.util.db.DBAccess.getListMapResult(DBAccess.java:180)
+	at com.teradata.datatools.util.db.DBAccess.getListMapResult(DBAccess.java:196)
+	at com.teradata.datatools.util.db.QueryRunner.runList(QueryRunner.java:262)
+	at com.teradata.datatools.util.db.QueryRunner.executeListQuery(QueryRunner.java:125)
+	at com.teradata.datatools.util.dao.JdbcDAO.runQueries(JdbcDAO.java:824)
+	at com.teradata.datatools.dao.asterdata.AsterDataDAO.getTablesAndViews(AsterDataDAO.java:203)
+	at com.teradata.datatools.asterdata.catalog.AsterDataTableLoader.loadTables(AsterDataTableLoader.java:255)
+	at com.teradata.datatools.asterdata.catalog.AsterDataCatalogSchema.loadTables(AsterDataCatalogSchema.java:264)
+	at com.teradata.datatools.asterdata.catalog.AsterDataCatalogSchema.getTables(AsterDataCatalogSchema.java:221)
+	at org.eclipse.datatools.modelbase.sql.schema.impl.SchemaImpl.eGet(SchemaImpl.java:597)
+	at org.eclipse.emf.ecore.impl.BasicEObjectImpl.eGet(BasicEObjectImpl.java:1011)
+	at org.eclipse.emf.ecore.impl.BasicEObjectImpl.eGet(BasicEObjectImpl.java:1003)
+	at org.eclipse.emf.ecore.impl.BasicEObjectImpl.eGet(BasicEObjectImpl.java:998)
+	at org.eclipse.datatools.connectivity.sqm.server.internal.ui.explorer.providers.content.layout.vnode.ServerExplorerVNodeContentProviderNav.getSchemaChildren(ServerExplorerVNodeContentProviderNav.java:250)
+	at org.eclipse.datatools.connectivity.sqm.server.internal.ui.explorer.providers.content.layout.vnode.ServerExplorerVNodeContentProviderNav.displayTableNodeChildren(ServerExplorerVNodeContentProviderNav.java:187)
+	at org.eclipse.datatools.connectivity.sqm.server.internal.ui.explorer.providers.content.layout.AbstractOnDemandContentProviderNav.getChildren(AbstractOnDemandContentProviderNav.java:173)
+	at org.eclipse.datatools.connectivity.sqm.server.internal.ui.explorer.providers.content.layout.AbstractOnDemandContentProviderNav.getChildren(AbstractOnDemandContentProviderNav.java:243)
+	at org.eclipse.datatools.connectivity.sqm.server.internal.ui.explorer.providers.content.layout.AbstractLayoutProviderNav.getChildren(AbstractLayoutProviderNav.java:85)
+	at org.eclipse.datatools.connectivity.sqm.server.internal.ui.explorer.providers.content.impl.ServerExplorerContentProviderNav.load(ServerExplorerContentProviderNav.java:153)
+	at org.eclipse.datatools.connectivity.sqm.server.internal.ui.explorer.loading.LoadingJob.run(LoadingJob.java:43)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: com.asterdata.ncluster.jdbc.core.MuleException: [AsterData][ASTERJDBCDSII](34) : Database connection broken ()
+	... 32 more
+
+!ENTRY org.eclipse.datatools.connectivity.sqm.core 4 4 2017-12-08 11:26:00.820
+!MESSAGE java.sql.SQLException
+!STACK 0
+java.sql.SQLException: [AsterData][ASTERJDBCDSII](34) : Database connection broken ()
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterQueryExecutor.mulePrepare(Unknown Source)
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterQueryExecutor.prepare(Unknown Source)
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterQueryExecutor.<init>(Unknown Source)
+	at com.asterdata.ncluster.jdbc.dataengine.NClusterDataEngine.prepare(Unknown Source)
+	at com.simba.jdbc.common.SStatement.executeNoParams(Unknown Source)
+	at com.simba.jdbc.common.SStatement.executeQuery(Unknown Source)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:207)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:207)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.StatementAdapter.executeQuery(StatementAdapter.java:73)
+	at com.teradata.datatools.asterdata.sqltools.AsterDataExternalRunQuery.isAsterActiveConnection(AsterDataExternalRunQuery.java:130)
+	at com.teradata.datatools.asterdata.sqltools.AsterDataExternalRunQuery.init(AsterDataExternalRunQuery.java:84)
+	at org.eclipse.datatools.sqltools.tabledataeditor.actions.SampleContentAction.run(SampleContentAction.java:301)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:473)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:565)
+	at org.eclipse.jface.action.ActionContributionItem.lambda$4(ActionContributionItem.java:397)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4410)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4228)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3816)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at com.teradata.studio.StudioApplication.start(StudioApplication.java:53)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+Caused by: com.asterdata.ncluster.jdbc.core.MuleException: [AsterData][ASTERJDBCDSII](34) : Database connection broken ()
+	... 41 more
+!SESSION 2017-12-08 13:26:00.813 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_151
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2017-12-08 13:26:02.211
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.ui.navigator 2 0 2017-12-08 13:26:09.379
+!MESSAGE Warning: popupMenuId of "org.eclipse.datatools.connectivity.DataSourceExplorerNavigator" was overridden: old value = "org.eclipse.datatools.connectivity.DataSourceExplorerNavigator.menu", new value = "org.eclipse.datatools.connectivity.DataSourceExplorerNavigator.menu".
+
+!ENTRY org.eclipse.ui.navigator 2 0 2017-12-08 13:26:09.380
+!MESSAGE Warning: popupMenuId of "org.eclipse.ui.navigator.ProjectExplorer" was overridden: old value = "org.eclipse.ui.navigator.ProjectExplorer#PopupMenu", new value = "org.eclipse.ui.navigator.ProjectExplorer#PopupMenu".
+
+!ENTRY org.eclipse.datatools.connectivity 2 -1 2017-12-08 13:28:04.779
+!MESSAGE Error creating SQL Model Connection connection to PRDW - Aster. (Error: [AsterData][ASTERJDBCDSII](34) : Failed to connect to 192.168.100.220. Please check the host address. ())
+!STACK 0
+java.sql.SQLException: [AsterData][ASTERJDBCDSII](34) : Failed to connect to 192.168.100.220. Please check the host address. ()
+	at com.asterdata.ncluster.jdbc.core.NClusterConnection.connect(Unknown Source)
+	at com.simba.jdbc.common.BaseConnectionFactory.doConnect(Unknown Source)
+	at com.simba.jdbc.common.AbstractDriver.connect(Unknown Source)
+	at com.teradata.datatools.asterdata.connectivity.AsterDataJDBCConnection.makeConnection(AsterDataJDBCConnection.java:212)
+	at com.teradata.datatools.asterdata.connectivity.AsterDataJDBCConnection.createConnection(AsterDataJDBCConnection.java:183)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.internalCreateConnection(DriverConnectionBase.java:105)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.open(DriverConnectionBase.java:54)
+	at com.teradata.datatools.asterdata.connectivity.AsterDataJDBCConnection.<init>(AsterDataJDBCConnection.java:75)
+	at com.teradata.datatools.asterdata.connectivity.AsterDataConnectionFactory.createPooledConnection(AsterDataConnectionFactory.java:106)
+	at com.teradata.datatools.asterdata.connectivity.AsterPooledConnectionFactory.createConnection(AsterPooledConnectionFactory.java:48)
+	at org.apache.commons.dbcp2.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:256)
+	at org.apache.commons.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:861)
+	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:435)
+	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:363)
+	at com.teradata.datatools.connection.pool.ConnectionPoolControl.checkProfile(ConnectionPoolControl.java:305)
+	at com.teradata.datatools.connection.pool.ConnectionPoolControl.getConnection(ConnectionPoolControl.java:408)
+	at com.teradata.datatools.connection.pool.ConnectionHelper.getConnection(ConnectionHelper.java:40)
+	at com.teradata.datatools.connection.services.impl.ConnectionService.getConnection(ConnectionService.java:70)
+	at com.teradata.datatools.asterdata.connectivity.AsterDataConnectionFactory.createConnection(AsterDataConnectionFactory.java:59)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryProvider.createConnection(ConnectionFactoryProvider.java:83)
+	at org.eclipse.datatools.connectivity.internal.ConnectionProfile.createConnection(ConnectionProfile.java:359)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionInfoImpl.initializeJDBCConnection(ConnectionInfoImpl.java:705)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionInfoImpl.<init>(ConnectionInfoImpl.java:690)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionFactory.createConnection(ConnectionFactory.java:38)
+	at org.eclipse.datatools.connectivity.sqm.core.SQMConnectionFactory.createConnection(SQMConnectionFactory.java:45)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionFactory.createConnection(ConnectionFactory.java:59)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryAdapterProvider.createConnection(ConnectionFactoryAdapterProvider.java:114)
+	at org.eclipse.datatools.connectivity.internal.ManagedConnection.createConnection(ManagedConnection.java:179)
+	at org.eclipse.datatools.connectivity.internal.CreateConnectionJob.run(CreateConnectionJob.java:61)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: com.asterdata.ncluster.jdbc.core.MuleException: [AsterData][ASTERJDBCDSII](34) : Failed to connect to 192.168.100.220. Please check the host address. ()
+	... 30 more
+
+!ENTRY org.eclipse.datatools.connectivity 4 -1 2017-12-08 13:28:04.888
+!MESSAGE Could not connect to PRDW - Aster.
+!SUBENTRY 1 org.eclipse.datatools.connectivity 2 -1 2017-12-08 13:28:04.888
+!MESSAGE Error creating SQL Model Connection connection to PRDW - Aster. (Error: [AsterData][ASTERJDBCDSII](34) : Failed to connect to 192.168.100.220. Please check the host address. ())
+!STACK 0
+java.sql.SQLException: [AsterData][ASTERJDBCDSII](34) : Failed to connect to 192.168.100.220. Please check the host address. ()
+	at com.asterdata.ncluster.jdbc.core.NClusterConnection.connect(Unknown Source)
+	at com.simba.jdbc.common.BaseConnectionFactory.doConnect(Unknown Source)
+	at com.simba.jdbc.common.AbstractDriver.connect(Unknown Source)
+	at com.teradata.datatools.asterdata.connectivity.AsterDataJDBCConnection.makeConnection(AsterDataJDBCConnection.java:212)
+	at com.teradata.datatools.asterdata.connectivity.AsterDataJDBCConnection.createConnection(AsterDataJDBCConnection.java:183)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.internalCreateConnection(DriverConnectionBase.java:105)
+	at org.eclipse.datatools.connectivity.DriverConnectionBase.open(DriverConnectionBase.java:54)
+	at com.teradata.datatools.asterdata.connectivity.AsterDataJDBCConnection.<init>(AsterDataJDBCConnection.java:75)
+	at com.teradata.datatools.asterdata.connectivity.AsterDataConnectionFactory.createPooledConnection(AsterDataConnectionFactory.java:106)
+	at com.teradata.datatools.asterdata.connectivity.AsterPooledConnectionFactory.createConnection(AsterPooledConnectionFactory.java:48)
+	at org.apache.commons.dbcp2.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:256)
+	at org.apache.commons.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:861)
+	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:435)
+	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:363)
+	at com.teradata.datatools.connection.pool.ConnectionPoolControl.checkProfile(ConnectionPoolControl.java:305)
+	at com.teradata.datatools.connection.pool.ConnectionPoolControl.getConnection(ConnectionPoolControl.java:408)
+	at com.teradata.datatools.connection.pool.ConnectionHelper.getConnection(ConnectionHelper.java:40)
+	at com.teradata.datatools.connection.services.impl.ConnectionService.getConnection(ConnectionService.java:70)
+	at com.teradata.datatools.asterdata.connectivity.AsterDataConnectionFactory.createConnection(AsterDataConnectionFactory.java:59)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryProvider.createConnection(ConnectionFactoryProvider.java:83)
+	at org.eclipse.datatools.connectivity.internal.ConnectionProfile.createConnection(ConnectionProfile.java:359)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionInfoImpl.initializeJDBCConnection(ConnectionInfoImpl.java:705)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionInfoImpl.<init>(ConnectionInfoImpl.java:690)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionFactory.createConnection(ConnectionFactory.java:38)
+	at org.eclipse.datatools.connectivity.sqm.core.SQMConnectionFactory.createConnection(SQMConnectionFactory.java:45)
+	at org.eclipse.datatools.connectivity.sqm.internal.core.connection.ConnectionFactory.createConnection(ConnectionFactory.java:59)
+	at org.eclipse.datatools.connectivity.internal.ConnectionFactoryAdapterProvider.createConnection(ConnectionFactoryAdapterProvider.java:114)
+	at org.eclipse.datatools.connectivity.internal.ManagedConnection.createConnection(ManagedConnection.java:179)
+	at org.eclipse.datatools.connectivity.internal.CreateConnectionJob.run(CreateConnectionJob.java:61)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: com.asterdata.ncluster.jdbc.core.MuleException: [AsterData][ASTERJDBCDSII](34) : Failed to connect to 192.168.100.220. Please check the host address. ()
+	... 30 more
+!SESSION 2017-12-08 14:22:42.478 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_151
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.ui.navigator 2 0 2017-12-08 14:22:49.494
+!MESSAGE Warning: popupMenuId of "org.eclipse.datatools.connectivity.DataSourceExplorerNavigator" was overridden: old value = "org.eclipse.datatools.connectivity.DataSourceExplorerNavigator.menu", new value = "org.eclipse.datatools.connectivity.DataSourceExplorerNavigator.menu".
+
+!ENTRY org.eclipse.ui.navigator 2 0 2017-12-08 14:22:49.495
+!MESSAGE Warning: popupMenuId of "org.eclipse.ui.navigator.ProjectExplorer" was overridden: old value = "org.eclipse.ui.navigator.ProjectExplorer#PopupMenu", new value = "org.eclipse.ui.navigator.ProjectExplorer#PopupMenu".
