@@ -1,6 +1,7 @@
 --un exemple de actualdate:2017-11-23 16:30:08.000000
 
---on fix actualdate = un de fetchedAT dans table de base de staging
+--faut initialiser d'abord tous les temps de fetch dans le table de dimension t_time
+
 INSERT INTO "prdwa17_target"."t_time" 
 ("t_actualdate", 
 "t_year", 
@@ -11,7 +12,7 @@ INSERT INTO "prdwa17_target"."t_time"
 "t_minutes", 
 "t_seconds", 
 "t_trimester", 
-"t_season") VALUES (actualdate,?,?,?,?,?,?,?,?,?);
+"t_season") VALUES (？,?,?,?,?,?,?,?,?,?);
  	
 --on divise le table de staging par fetchdat
 
@@ -28,29 +29,25 @@ INSERT INTO "prdwa17_target"."t_video"
  "t_topiccategorie1", 
  "t_topiccategorie2", 
  "t_topiccategorie3")
- SELECT "prdwa17_staging"."videos"."id",
- "prdwa17_staging"."videos"."title",
- "prdwa17_staging"."videos"."id", 
- "prdwa17_staging"."videos"."description",
- "prdwa17_staging"."videos"."publishedat", 
- "prdwa17_staging"."channels"."id", 
- "prdwa17_staging"."channels"."title",
- "prdwa17_staging"."channels"."description", 
- "prdwa17_staging"."videos"."topiccategory_1", 
- "prdwa17_staging"."videos"."topiccategory_2", 
- "prdwa17_staging"."videos"."topiccategory_3"
+ SELECT "prdwa17_staging"."videos_test"."id",
+ "prdwa17_staging"."videos_test"."title",
+ "prdwa17_staging"."videos_test"."id", 
+ "prdwa17_staging"."videos_test"."description",
+ "prdwa17_staging"."videos_test"."publishedat", 
+ "prdwa17_staging"."channels_test"."id", 
+ "prdwa17_staging"."channels_test"."title",
+ "prdwa17_staging"."channels_test"."description", 
+ "prdwa17_staging"."videos_test"."topiccategory_1", 
+ "prdwa17_staging"."videos_test"."topiccategory_2", 
+ "prdwa17_staging"."videos_test"."topiccategory_3"
 
- FROM "prdwa17_staging"."channels"
- INNER JOIN "prdwa17_staging"."videos" as dim1
- on "prdwa17_staging"."channels"."id" = dim1."channelid"
- WHERE extract('hour' FROM "prdwa17_staging"."channels"."fetchedat") = extract('hour' FROM dim1."fetchedat")
- and not exists (select * from "prdwa17_target"."t_video" where t_videoid = dim1.id);
- 
- select id from "prdwa17_staging"."videos";
- 
- select id from prdwa17_staging.videos where
- not exists (select * from prdwa17_target.t_video where t_videoid = prdwa17_staging.videos.id);
---table de fiat t-videofacts
+ FROM "prdwa17_staging"."channels_test"
+ INNER JOIN "prdwa17_staging"."videos_test"
+ on "prdwa17_staging"."channels_test"."id" = "prdwa17_staging"."videos_test"."channelid"
+ WHERE extract('hour' FROM "prdwa17_staging"."channels_test"."fetchedat") = extract('hour' FROM "prdwa17_staging"."videos_test"."fetchedat")
+ and  "prdwa17_staging"."videos_test"."id" NOT IN (select code_video from "prdwa17_target"."t_video");
+
+--table de fait t-videofacts
  INSERT INTO "prdwa17_target"."t_videofacts" 
  ("code_videofact", 
  "code_video",
@@ -64,21 +61,23 @@ INSERT INTO "prdwa17_target"."t_video"
  "t_viewcount",
  "t_favoritecount")  
 SELECT  
-'ers',
-"prdwa17_staging"."videos"."fetchedat",
-"prdwa17_staging"."channels"."commentcount",
-"prdwa17_staging"."channels"."subscribercount", 
-"prdwa17_staging"."channels"."videocount", 
-"prdwa17_staging"."videos"."commentcount", 
-"prdwa17_staging"."videos"."likecount", 
-"prdwa17_staging"."videos"."dislikecount",
-"prdwa17_staging"."videos"."viewcount",
-"prdwa17_staging"."videos"."favoritecount"
+"prdwa17_staging"."videos_test"."id" || "prdwa17_staging"."videos_test"."fetchedat",
+"prdwa17_staging"."videos_test"."id",
+"prdwa17_staging"."videos_test"."fetchedat",
+"prdwa17_staging"."channels_test"."commentcount",
+"prdwa17_staging"."channels_test"."subscribercount", 
+"prdwa17_staging"."channels_test"."videocount", 
+"prdwa17_staging"."videos_test"."commentcount", 
+"prdwa17_staging"."videos_test"."likecount", 
+"prdwa17_staging"."videos_test"."dislikecount",
+"prdwa17_staging"."videos_test"."viewcount",
+"prdwa17_staging"."videos_test"."favoritecount"
 
- FROM "prdwa17_staging"."channels"
- INNER JOIN "prdwa17_staging"."videos"
- on "prdwa17_staging"."channels"."id" = "prdwa17_staging"."videos"."channelid"
- WHERE "prdwa17_staging"."videos"."fetchedat" = "prdwa17_staging"."channels"."fetchedat";
+ FROM "prdwa17_staging"."channels_test"
+ INNER JOIN "prdwa17_staging"."videos_test"
+ on "prdwa17_staging"."channels_test"."id" = "prdwa17_staging"."videos_test"."channelid"
+ WHERE extract('hour' FROM "prdwa17_staging"."channels_test"."fetchedat") = extract('hour' FROM "prdwa17_staging"."videos_test"."fetchedat")
+ and  extract('hour' FROM "prdwa17_staging"."videos_test"."fetchedat") NOT IN (select extract('hour' FROM t_actualdate) from "prdwa17_target"."t_videofacts");
 
 --table de fait t-videocomment
  INSERT INTO "prdwa17_target"."t_videocomment" 
@@ -91,19 +90,19 @@ SELECT
  "t_idcommentthread", 
  "t_likecount")  
  SELECT
- "prdwa17_staging"."videoscomments"."screenshot",
- "prdwa17_staging"."videos"."screenshot", 
- "prdwa17_staging"."videoscomments"."fetchedat",
- "prdwa17_staging"."videoscomments"."id", 
- "prdwa17_staging"."videoscomments"."textoriginal",
- "prdwa17_staging"."videoscomments"."authorchannelid",
- "prdwa17_staging"."videoscomments"."parentid",
- "prdwa17_staging"."videoscomments"."likecount"
+ "prdwa17_staging"."videoscomments_test"."id" || "prdwa17_staging"."videos_test"."fetchedat",
+ "prdwa17_staging"."videos_test"."id", 
+ "prdwa17_staging"."videos_test"."fetchedat",
+ "prdwa17_staging"."videoscomments_test"."id", 
+ "prdwa17_staging"."videoscomments_test"."textoriginal",
+ "prdwa17_staging"."videoscomments_test"."authorchannelid",
+ "prdwa17_staging"."videoscomments_test"."parentid",
+ "prdwa17_staging"."videoscomments_test"."likecount"
 
- FROM "prdwa17_staging"."videos"
- INNER JOIN "prdwa17_staging"."videoscomments"
- on "prdwa17_staging"."videos"."id" = "prdwa17_staging"."videoscomments"."videoid"
- WHERE "prdwa17_staging"."videos"."fetchedat" = actualdate
- AND "prdwa17_staging"."videoscomments"."fetchedat" = actualdate;
+ FROM "prdwa17_staging"."videos_test"
+ INNER JOIN "prdwa17_staging"."videoscomments_test"
+ on "prdwa17_staging"."videos_test"."id" = "prdwa17_staging"."videoscomments_test"."videoid"
+ WHERE extract('hour' FROM "prdwa17_staging"."videoscomments_test"."fetchedat") = extract('hour' FROM "prdwa17_staging"."videos_test"."fetchedat")
+ and  extract('hour' FROM "prdwa17_staging"."videos_test"."fetchedat") NOT IN (select extract('hour' FROM t_actualdate) from "prdwa17_target"."t_videocomment");
 
 
