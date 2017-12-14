@@ -1,7 +1,7 @@
 --un exemple de actualdate:2017-11-23 16:30:08.000000
 
 --faut initialiser d'abord tous les temps de fetch dans le table de dimension t_time
-
+--"prdwa17_staging"."videos_test"."fetchedat"
 INSERT INTO "prdwa17_target"."t_time" 
 ("t_actualdate", 
 "t_year", 
@@ -77,7 +77,7 @@ SELECT
  INNER JOIN "prdwa17_staging"."videos_test"
  on "prdwa17_staging"."channels_test"."id" = "prdwa17_staging"."videos_test"."channelid"
  WHERE extract('hour' FROM "prdwa17_staging"."channels_test"."fetchedat") = extract('hour' FROM "prdwa17_staging"."videos_test"."fetchedat")
- and  extract('hour' FROM "prdwa17_staging"."videos_test"."fetchedat") NOT IN (select extract('hour' FROM t_actualdate) from "prdwa17_target"."t_videofacts");
+ and  "prdwa17_staging"."videos_test"."fetchedat" NOT IN (select t_actualdate from "prdwa17_target"."t_videofacts");
 
 --table de fait t-videocomment
  INSERT INTO "prdwa17_target"."t_videocomment" 
@@ -103,6 +103,6 @@ SELECT
  INNER JOIN "prdwa17_staging"."videoscomments_test"
  on "prdwa17_staging"."videos_test"."id" = "prdwa17_staging"."videoscomments_test"."videoid"
  WHERE extract('hour' FROM "prdwa17_staging"."videoscomments_test"."fetchedat") = extract('hour' FROM "prdwa17_staging"."videos_test"."fetchedat")
- and  extract('hour' FROM "prdwa17_staging"."videos_test"."fetchedat") NOT IN (select extract('hour' FROM t_actualdate) from "prdwa17_target"."t_videocomment");
+ and  "prdwa17_staging"."videos_test"."fetchedat" NOT IN (select  t_actualdate from "prdwa17_target"."t_videocomment");
 
 
