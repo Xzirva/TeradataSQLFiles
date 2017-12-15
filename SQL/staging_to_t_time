@@ -1,0 +1,47 @@
+INSERT INTO "prdwa17_target"."t_time" 
+("t_actualdate", 
+"t_year", 
+"t_month",
+"t_week", 
+"t_day", 
+"t_hour", 
+"t_minutes", 
+"t_seconds", 
+"t_trimester", 
+"t_season")
+SELECT DISTINCT "prdwa17_staging"."videos".fetchedat,
+ extract('year' FROM "prdwa17_staging"."videos"."fetchedat"),
+ extract('month' FROM "prdwa17_staging"."videos"."fetchedat"),
+ extract('week' FROM "prdwa17_staging"."videos"."fetchedat"),
+ extract('day' FROM "prdwa17_staging"."videos"."fetchedat"),
+ extract('hour' FROM "prdwa17_staging"."videos"."fetchedat"),
+ extract('minutes' FROM "prdwa17_staging"."videos"."fetchedat"),
+ extract('seconds' FROM "prdwa17_staging"."videos"."fetchedat"),
+ 4,
+ 2
+ FROM "prdwa17_staging"."videos"
+ WHERE "prdwa17_staging"."videos".fetchedat not in (select t_actualdate from "prdwa17_target"."t_time");
+ 
+ INSERT INTO "prdwa17_target"."t_time" 
+("t_actualdate", 
+"t_year", 
+"t_month",
+"t_week", 
+"t_day", 
+"t_hour", 
+"t_minutes", 
+"t_seconds", 
+"t_trimester", 
+"t_season")
+SELECT DISTINCT "prdwa17_staging"."videos".publishedat,
+ extract('year' FROM "prdwa17_staging"."videos"."publishedat"),
+ extract('month' FROM "prdwa17_staging"."videos"."publishedat"),
+ extract('week' FROM "prdwa17_staging"."videos"."publishedat"),
+ extract('day' FROM "prdwa17_staging"."videos"."publishedat"),
+ extract('hour' FROM "prdwa17_staging"."videos"."publishedat"),
+ extract('minutes' FROM "prdwa17_staging"."videos"."publishedat"),
+ extract('seconds' FROM "prdwa17_staging"."videos"."publishedat"),
+ 4,
+ 2
+ FROM "prdwa17_staging"."videos"
+ WHERE "prdwa17_staging"."videos".publishedat not in (select t_actualdate from "prdwa17_target"."t_time");
