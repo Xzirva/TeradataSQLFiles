@@ -98,7 +98,7 @@ SELECT DISTINCT "prdwa17_staging"."videos".fetchedat,
  extract('minutes' FROM "prdwa17_staging"."videos"."fetchedat"),
  extract('seconds' FROM "prdwa17_staging"."videos"."fetchedat"),
  4,
- 2
+ 4
  FROM "prdwa17_staging"."videos"
  WHERE "prdwa17_staging"."videos".fetchedat not in (select t_actualdate from "prdwa17_target"."t_time");
  
@@ -122,7 +122,7 @@ SELECT DISTINCT "prdwa17_staging"."videoscomments".fetchedat,
  extract('minutes' FROM "prdwa17_staging"."videoscomments"."fetchedat"),
  extract('seconds' FROM "prdwa17_staging"."videoscomments"."fetchedat"),
  4,
- 2
+ 4
  FROM "prdwa17_staging"."videoscomments"
  WHERE "prdwa17_staging"."videoscomments".fetchedat not in (select t_actualdate from "prdwa17_target"."t_time");
  
@@ -146,7 +146,7 @@ SELECT DISTINCT "prdwa17_staging"."videos".publishedat,
  extract('minutes' FROM "prdwa17_staging"."videos"."publishedat"),
  extract('seconds' FROM "prdwa17_staging"."videos"."publishedat"),
  4,
- 2
+ 4
  FROM "prdwa17_staging"."videos"
  WHERE "prdwa17_staging"."videos".publishedat not in (select t_actualdate from "prdwa17_target"."t_time");
  
@@ -170,7 +170,7 @@ SELECT DISTINCT "prdwa17_staging"."videoscomments".publishedat,
  extract('minutes' FROM "prdwa17_staging"."videoscomments"."publishedat"),
  extract('seconds' FROM "prdwa17_staging"."videoscomments"."publishedat"),
  4,
- 2
+ 4
  FROM "prdwa17_staging"."videoscomments"
  WHERE "prdwa17_staging"."videoscomments".publishedat not in (select t_actualdate from "prdwa17_target"."t_time");
  

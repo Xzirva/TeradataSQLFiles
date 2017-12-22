@@ -50,12 +50,14 @@ CREATE TABLE prdwa17_backup.videosComments (
 	fetchedAt TIMESTAMP
 ) DISTRIBUTE BY HASH(id);
 
-
+truncate prdwa17_backup.channels;
 insert into prdwa17_backup.channels
-select * from prdwa17_staging.channels;
+select * from prdwa17_staging.channels limit 10000;
 
+truncate prdwa17_backup.videos;
 insert into prdwa17_backup.videos
-select * from prdwa17_staging.videos;
+select * from prdwa17_staging.videos limit 10000;
 
+truncate prdwa17_backup.videoscomments;
 insert into prdwa17_backup.videoscomments
-select * from prdwa17_staging.videoscomments;
+select * from prdwa17_staging.videoscomments limit 10000;
