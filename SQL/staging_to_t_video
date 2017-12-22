@@ -1,0 +1,42 @@
+INSERT INTO "prdwa17_target"."t_video" 
+ ("code_video", 
+ "t_title", 
+ "t_videoid", 
+ "t_description", 
+ "t_publishedat",
+ "t_channelid", 
+ "t_channeltitle", 
+ "t_channeldescription", 
+ "t_topiccategorie1", 
+ "t_topiccategorie2", 
+ "t_topiccategorie3")
+ SELECT v.code_video,
+ v.title,
+ v.id,
+ v.description,
+ v.publishedat,
+ v.channelid,
+ v.channeltitle,
+ v.channeldescription,
+ v.topiccategory_1,
+ v.topiccategory_2,
+ v.topiccategory_3
+ from (
+ SELECT DISTINCT "prdwa17_staging"."videos"."id" as code_video,
+ "prdwa17_staging"."videos"."title",
+ "prdwa17_staging"."videos"."id", 
+ "prdwa17_staging"."videos"."description",
+ "prdwa17_staging"."videos"."publishedat", 
+ "prdwa17_staging"."channels"."id" as channelid, 
+ "prdwa17_staging"."channels"."title" as channeltitle,
+ "prdwa17_staging"."channels"."description" as channeldescription, 
+ "prdwa17_staging"."videos"."topiccategory_1", 
+ "prdwa17_staging"."videos"."topiccategory_2", 
+ "prdwa17_staging"."videos"."topiccategory_3",
+ row_number() over (partition by "prdwa17_staging"."videos"."id" order by "prdwa17_staging"."videos"."id") as rownumber
+
+ FROM "prdwa17_staging"."videos"
+ INNER JOIN "prdwa17_staging"."channels"
+ on "prdwa17_staging"."channels"."id" = "prdwa17_staging"."videos"."channelid") as v
+ where v.rownumber = 1
+ and v.id not in (select code_video from "prdwa17_target"."t_video");
