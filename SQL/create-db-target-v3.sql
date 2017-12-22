@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* Nom de SGBD :  PostgreSQL 9.x                                */
-/* Date de création :  17/11/2017 14:33:06                      */
+/* Date de crÃ©ation :  17/11/2017 14:33:06                      */
 /*==============================================================*/
 
 /*
@@ -125,8 +125,7 @@ create fact table prdwa17_target.T_VIDEOCOMMENT (
    T_AUTHOR             VARCHAR(100)                 null,
    T_ISPUBLICCOMMENTTHREAD BOOL                 null,
    T_IDCOMMENTTHREAD    VARCHAR(100)          null,
-   T_LIKECOUNT INT null,
-   primary key (CODE_VIDEOCOMMENT)
+   T_LIKECOUNT INT null
 )
 DISTRIBUTE BY HASH(CODE_VIDEOCOMMENT)
 STORAGE ROW
@@ -170,8 +169,7 @@ create fact table prdwa17_target.T_VIDEOFACTS (
    T_LIKECOUNT          BIGINT                 null,
    T_DISLIKECOUNT       BIGINT                 null,
    T_VIEWCOUNT          BIGINT                 null,
-   T_FAVORITECOUNT      BIGINT                 null,
-   primary key (CODE_VIDEOFACT)
+   T_FAVORITECOUNT      BIGINT                 null
 )
 DISTRIBUTE BY HASH(CODE_VIDEOFACT)
 STORAGE ROW
