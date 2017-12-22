@@ -1,5 +1,0 @@
-TRUNCATE prdwa17_staging.videos_test;
-TRUNCATE prdwa17_staging.channels_test;
-TRUNCATE prdwa17_staging.videosComments_test;
-
-select * from prdwa17_staging.videosComments_test where videoid = 'nwHgZVY-lA0';

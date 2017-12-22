@@ -1,3 +1,7 @@
+TRUNCATE prdwa17_staging.videos;
+TRUNCATE prdwa17_staging.channels;
+TRUNCATE prdwa17_staging.videosComments;
+
 TRUNCATE prdwa17_staging.videos_test;
 TRUNCATE prdwa17_staging.channels_test;
 TRUNCATE prdwa17_staging.videosComments_test;

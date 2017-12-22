@@ -1,73 +1,59 @@
--- Cleaning description: Removing urls
-update prdwa17_staging.videos_descriptions
-set description = regexp_replace(description, '(http.+?|www.+?) ', ' ');
--- 
+truncate prdwa17_staging.videos_titles;
+insert into prdwa17_staging.videos_titles
+select id, title from prdwa17_staging.videos;
 
-select id, description --regexp_replace(description, uc.title, '') 
+truncate prdwa17_staging.videos_descriptions;
+insert into prdwa17_staging.videos_descriptions
+select id, description from prdwa17_staging.videos;
+
+insert into prdwa17_staging.videos_titles_descriptions
+select distinct id, regexp_replace((title || ' ' || description), '(http.+?|www.+?) ', ' ')
+as content from prdwa17_staging.videos_test;
+
+/*select id, description --regexp_replace(description, uc.title, '') 
 from prdwa17_staging.videos_descriptions, 
 (select * from prdwa17_staging.unwanted_chars order by 1 desc limit 1) uc
 --(select * from prdwa17_staging.unwanted_chars order by 1 desc limit 1), '')
 where description LIKE '%' || uc.title || '%';
 
 update prdwa17_staging.videos_descriptions set description = regexp_replace(description,
-(select * from prdwa17_staging.unwanted_chars order by 1 desc limit 1), '') where
+(select * from prdwa17_staging.unwanted_chars order by 1 desc limit 1), ' ') where
 description like '%' || (select * from prdwa17_staging.unwanted_chars order by 1 desc limit 1) || '%';
 
 update prdwa17_staging.videos_descriptions set description = regexp_replace(description,
-(select * from prdwa17_staging.unwanted_chars order by 1 asc limit 1), '') where
+(select * from prdwa17_staging.unwanted_chars order by 1 asc limit 1), ' ') where
 description like '%' || (select * from prdwa17_staging.unwanted_chars order by 1 asc limit 1) || '%';
--- Cleaning title: Removing urls
-update prdwa17_staging.videos_titles
-set title = regexp_replace(title, '(http.+?|www.+?) ', ' ');
-update prdwa17_staging.videos_titles set title = regexp_replace(title, (select * from prdwa17_staging.unwanted_chars order by 1 desc limit 1), '')
+update prdwa17_staging.videos_titles set title = regexp_replace(title, 
+(select * from prdwa17_staging.unwanted_chars order by 1 desc limit 1), '')
 where title LIKE '%' || (select * from prdwa17_staging.unwanted_chars order by 1 desc limit 1) || '%';
-
-select * from prdwa17_staging.
+*/
 --truncate prdwa17_staging.parsed_descriptions;
-create table prdwa17_staging.parsed_descriptions DISTRIBUTE BY hash(id) AS
-select id, description, TRIM(token) as term, length(TRIM(token)) ,frequency, position from text_parser(on 
-(select * from prdwa17_staging.videos_descriptions)
-	text_column('description')
+--create table prdwa17_staging.parsed_descriptions DISTRIBUTE BY hash(id) AS
+
+--drop table prdwa17_staging.parsed_titles_descriptions;
+truncate prdwa17_staging.parsed_titles_description;
+insert into prdwa17_staging.parsed_titles_descriptions
+select id as docid, TRIM(token) as term, frequency as count from text_parser(on 
+(select id, content from prdwa17_staging.videos_titles_descriptions)
+	text_column('content')
 	case_insensitive('true')
 	stemming('true')
-	Punctuation ('\[\]\".,?:;!\|\%\&\#\+\-\=\$\@\(\)\'\]')	
+	Punctuation ('\[\]\".,?:;!\|\%\&\#\+\-\=\$\@\(\)’”“”\'–\]')	
 	list_positions('false')
 	remove_stop_words('true')
-	accumulate('id', 'description')
+	accumulate('id', 'content')
 	)
 order by term;
 --'
 	
---truncate prdwa17_staging.parsed_titles;
-create table prdwa17_staging.parsed_titles DISTRIBUTE BY hash(id) AS
-select id, title, TRIM(token) as term, length(TRIM(token)) ,frequency, position from text_parser(on 
-(select * from prdwa17_staging.videos_titles)
-	text_column('title')
-	case_insensitive('true')
-	stemming('true')
-	Punctuation ('\[\]\".,?:;!\|\%\&\#\+\-\=\$\@\(\)\'\]')	
-	list_positions('false')
-	remove_stop_words('true')
-	accumulate('id', 'title')
-	)
-order by term;
---'
-insert into prdwa17_staging.unwanted_chars
-select regexp_replace(term, 'trump', '') from 
-(select term, sum(frequency) from prdwa17_staging.parsed_titles group by term) s 
-where term like 'trump_';
+-- OK
+delete from prdwa17_staging.parsed_titles_descriptions where term like '' OR term like '% %';
 
-delete from prdwa17_staging.parsed_titles where term like '';
-select * from prdwa17_staging.parsed_descriptions where term like '';
-create table prdwa17_staging.tf_idf_in_descriptions DISTRIBUTE BY HASH(term) as
-select id as videoid, term from prdwa17_staging.parsed_descriptions;
+create table prdwa17_staging.tf_idf_out DISTRIBUTE BY HASH(docid) AS
+select * from tf_idf (
+ON tf ( ON  prdwa17_staging.parsed_titles_descriptions) as tf PARTITION BY term
+ON (select count(distinct docid) from prdwa17_staging.parsed_titles_descriptions
+) AS doccount DIMENSION
+);
 
-create table prdwa17_staging.tf_idf_out_descriptions DISTRIBUTE BY HASH(videoid) AS
-select * from tf_idf
-(
-ON tf
-(
-ON (select * from prdwa17_staging.tf_idf_in_descriptions PARTITION by videoid)
-) tf PARTITION BY term
-ON (select count(distinct(videoid)) from prdwa17_staging.tf_idf_in_descriptions) videoscount DIMENSION
-) order by videoid;
+--select id, ROW_NUMBER() OVER ( partition by id order by id) as row_number from prdwa17_staging.videos;

@@ -1,1 +1,0 @@
-CREATE TABLE prdwa17_staging.videosComments DISTRIBUTE BY hash(id)(	-- dbId BIGSERIAL LOCAL PRIMARY KEY,	id VARCHAR(100),	authorChannelurl VARCHAR(255),	authorDisplayedName VARCHAR(225),	authorChannelId VARCHAR(100),	videoId VARCHAR(100),	parentId VARCHAR(100),	textOriginal TEXT,	likeCount INT,	publishedAt TIMESTAMP,	fetchedAt TIMESTAMP);
