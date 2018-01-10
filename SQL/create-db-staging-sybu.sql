@@ -51,4 +51,4 @@ CREATE TABLE prdwa17_batch_load.videosComments (
 
 
 ---------------------------------------------------------------------------------
-select left(to_char(fetchedat, 'FMDay, FMDD HH12:MI:SS'),  CHARINDEX(',', to_char(fetchedat, 'FMDay, FMDD HH12:MI:SS')) - 1) from prdwa17_batch_load.videos;
+--select left(to_char(fetchedat, 'FMDay, FMDD HH12:MI:SS'),  CHARINDEX(',', to_char(fetchedat, 'FMDay, FMDD HH12:MI:SS')) - 1) from prdwa17_batch_load.videos;

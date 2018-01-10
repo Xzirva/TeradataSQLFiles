@@ -83,20 +83,16 @@ T_ACTUALDATE
 /*==============================================================*/
 create dimension table prdwa17_target.T_VIDEO (
    CODE_VIDEO           VARCHAR(255)              not null,
-   T_TITLE              VARCHAR(255)                null,
    T_VIDEOID            VARCHAR(100)          null,
+   T_TITLE              VARCHAR(255)                null,
    T_DESCRIPTION        TEXT                 null,
    T_CUSTOMURL          TEXT                 null,
-   T_CATEGORY           TEXT                 null,
    T_PUBLISHEDAT        TIMESTAMP                 null,
    T_DURATION           INT4                 null,
    T_CHANNELID          VARCHAR(100)          null,
    T_CHANNELTITLE       VARCHAR(255)                null,
    T_CHANNELDESCRIPTION TEXT                 null,
    T_CHANNELCUSTOMURL   TEXT                 null,
-   T_TOPICCATEGORIE1    VARCHAR(255)                null,
-   T_TOPICCATEGORIE2    VARCHAR(255)                 null,
-   T_TOPICCATEGORIE3    VARCHAR(255)                null,
    primary key (CODE_VIDEO)
 )
 DISTRIBUTE BY REPLICATION;
@@ -161,7 +157,6 @@ create fact table prdwa17_target.T_VIDEOFACTS (
    CODE_VIDEOFACT		   VARCHAR(255)    not null,/*prdwa17_staging.videos.screenshot*/
    CODE_VIDEO           VARCHAR(255)                 not null,
    T_ACTUALDATE         TIMESTAMP               not null,
-   CODE_TAG             INT4                 null,
    T_CHANNELCOMMENTSCOUNT BIGINT                 null,
    T_CHANNELSUBSCRIBERCOUNT BIGINT                 null,
    T_CHANNELVIDEOCOUNT  BIGINT                 null,
@@ -169,7 +164,10 @@ create fact table prdwa17_target.T_VIDEOFACTS (
    T_LIKECOUNT          BIGINT                 null,
    T_DISLIKECOUNT       BIGINT                 null,
    T_VIEWCOUNT          BIGINT                 null,
-   T_FAVORITECOUNT      BIGINT                 null
+   T_FAVORITECOUNT      BIGINT                 null,
+   T_TOPICCATEGORIE1    VARCHAR(255)                null,
+   T_TOPICCATEGORIE2    VARCHAR(255)                 null,
+   T_TOPICCATEGORIE3    VARCHAR(255)                null
 )
 DISTRIBUTE BY HASH(CODE_VIDEOFACT)
 STORAGE ROW
