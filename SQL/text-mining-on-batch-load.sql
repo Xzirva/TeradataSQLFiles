@@ -16,7 +16,7 @@ as content from prdwa17_batch_load.videos;
 
 select * from prdwa17_batch_load.videos_titles_descriptions where id = '28h5Vz7NuVw';
 update prdwa17_batch_load.videos_titles_descriptions 
-set content = regexp_replace(content, '(http.|www.)', '');
+set content = regexp_replace(content, '(http.|www.)', ' ');
 
 select id, content from prdwa17_batch_load.videos_titles_descriptions where content like '%http%';
 --select id, regexp_replace(content, '(http.+?|www.+?)(\s|\t|\n)', ' ') from prdwa17_batch_load.videos_titles_descriptions;
@@ -61,6 +61,18 @@ order by term;
 --'
 
 delete from prdwa17_batch_load.parsed_titles_descriptions_sample where term like '' OR term like '% %';
+
+delete from prdwa17_batch_load.parsed_titles_descriptions_sample 
+where term in (select LOWER(title) from prdwa17_backup.unique_channels);
+
+
+--select id, regexp_replace(content, uc.channel, ' ') 
+--from prdwa17_batch_load.videos v
+--inner join prdwa17_backup.unique_channels uc on v.channelid = uc.id;
+
+--select v.id, (v.description || ' ' || v.title) as content, uc.title
+--from prdwa17_batch_load.videos v
+--inner join prdwa17_backup.unique_channels uc on v.channelid = uc.id and (v.description || ' ' || v.title) LIKE '%' || uc.title ||'%';
 
 DROP TABLE prdwa17_batch_load.tf_idf_out_sample;
 

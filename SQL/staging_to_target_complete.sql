@@ -1,7 +1,7 @@
 -- create table prdwa17_backup.unique_channels distribute by hash(id) as
 -- select s.id, s.title, s.description from
 -- (select distinct id, title, description, row_number() over (partition by id order by id desc) as rank from prdwa17_backup.channels) as s where rank = 1;
-
+TRUNCATE "prdwa17_target"."t_video";
 INSERT INTO "prdwa17_target"."t_video" 
  ("code_video", 
  "t_title", 
@@ -81,7 +81,10 @@ select *, row_number() over (partition by channelid, id order by count desc) as 
  */
  
  --INSERTION DANS LA TABLE TIME
- 
+ create table prdwa17_backup.videos_facts_poc distribute by hash(id) as
+select v.* from prdwa17_backup.videos v inner join prdwa17_target.t_video t on v.id = t.t_videoid and v.channelid = t.t_channelid and t.t_title = v.title;
+select count(1) from prdwa17_backup.videos_facts_poc;
+
  INSERT INTO "prdwa17_target"."t_time" 
 ("t_actualdate", 
 "t_year", 
@@ -93,18 +96,18 @@ select *, row_number() over (partition by channelid, id order by count desc) as 
 "t_seconds", 
 "t_trimester", 
 "t_season")
-SELECT DISTINCT "prdwa17_backup"."videos".fetchedat,
- extract('year' FROM "prdwa17_backup"."videos"."fetchedat"),
- extract('month' FROM "prdwa17_backup"."videos"."fetchedat"),
- extract('week' FROM "prdwa17_backup"."videos"."fetchedat"),
- extract('day' FROM "prdwa17_backup"."videos"."fetchedat"),
- extract('hour' FROM "prdwa17_backup"."videos"."fetchedat"),
- extract('minutes' FROM "prdwa17_backup"."videos"."fetchedat"),
- extract('seconds' FROM "prdwa17_backup"."videos"."fetchedat"),
+SELECT DISTINCT "prdwa17_backup"."videos_facts_poc".fetchedat,
+ extract('year' FROM "prdwa17_backup"."videos_facts_poc"."fetchedat"),
+ extract('month' FROM "prdwa17_backup"."videos_facts_poc"."fetchedat"),
+ extract('week' FROM "prdwa17_backup"."videos_facts_poc"."fetchedat"),
+ extract('day' FROM "prdwa17_backup"."videos_facts_poc"."fetchedat"),
+ extract('hour' FROM "prdwa17_backup"."videos_facts_poc"."fetchedat"),
+ extract('minutes' FROM "prdwa17_backup"."videos_facts_poc"."fetchedat"),
+ extract('seconds' FROM "prdwa17_backup"."videos_facts_poc"."fetchedat"),
  4,
  4
- FROM "prdwa17_backup"."videos"
- WHERE "prdwa17_backup"."videos".fetchedat not in (select t_actualdate from "prdwa17_target"."t_time");
+ FROM "prdwa17_backup"."videos_facts_poc";
+ --WHERE "prdwa17_backup"."videos_facts_poc".fetchedat not in (select t_actualdate from "prdwa17_target"."t_time");
  
  INSERT INTO "prdwa17_target"."t_time" 
 ("t_actualdate", 
@@ -141,18 +144,18 @@ SELECT DISTINCT "prdwa17_backup"."videoscomments".fetchedat,
 "t_seconds", 
 "t_trimester", 
 "t_season")
-SELECT DISTINCT "prdwa17_backup"."videos".publishedat,
- extract('year' FROM "prdwa17_backup"."videos"."publishedat"),
- extract('month' FROM "prdwa17_backup"."videos"."publishedat"),
- extract('week' FROM "prdwa17_backup"."videos"."publishedat"),
- extract('day' FROM "prdwa17_backup"."videos"."publishedat"),
- extract('hour' FROM "prdwa17_backup"."videos"."publishedat"),
- extract('minutes' FROM "prdwa17_backup"."videos"."publishedat"),
- extract('seconds' FROM "prdwa17_backup"."videos"."publishedat"),
+SELECT DISTINCT "prdwa17_backup"."videos_facts_poc".publishedat,
+ extract('year' FROM "prdwa17_backup"."videos_facts_poc"."publishedat"),
+ extract('month' FROM "prdwa17_backup"."videos_facts_poc"."publishedat"),
+ extract('week' FROM "prdwa17_backup"."videos_facts_poc"."publishedat"),
+ extract('day' FROM "prdwa17_backup"."videos_facts_poc"."publishedat"),
+ extract('hour' FROM "prdwa17_backup"."videos_facts_poc"."publishedat"),
+ extract('minutes' FROM "prdwa17_backup"."videos_facts_poc"."publishedat"),
+ extract('seconds' FROM "prdwa17_backup"."videos_facts_poc"."publishedat"),
  4,
  4
- FROM "prdwa17_backup"."videos"
- WHERE "prdwa17_backup"."videos".publishedat not in (select t_actualdate from "prdwa17_target"."t_time");
+ FROM "prdwa17_backup"."videos_facts_poc"
+ WHERE "prdwa17_backup"."videos_facts_poc".publishedat not in (select t_actualdate from "prdwa17_target"."t_time");
  
  INSERT INTO "prdwa17_target"."t_time" 
 ("t_actualdate", 
@@ -226,20 +229,20 @@ SELECT DISTINCT "prdwa17_backup"."videos".id,
 "t_dislikecount", 
 "t_viewcount", 
 "t_favoritecount")
-SELECT DISTINCT "prdwa17_backup"."videos".id,
-"prdwa17_backup"."videos".id,
- "prdwa17_backup"."videos"."fetchedat",
+SELECT DISTINCT "prdwa17_backup"."videos_facts_poc".id || "prdwa17_backup"."videos_facts_poc".channelid,
+"prdwa17_backup"."videos_facts_poc".id,
+ "prdwa17_backup"."videos_facts_poc"."fetchedat",
  "prdwa17_backup"."channels"."commentcount",
  "prdwa17_backup"."channels"."subscribercount",
  "prdwa17_backup"."channels"."videocount",
- "prdwa17_backup"."videos"."commentcount",
- "prdwa17_backup"."videos"."likecount",
- "prdwa17_backup"."videos"."dislikecount",
- "prdwa17_backup"."videos"."viewcount",
- "prdwa17_backup"."videos"."favoritecount"
- FROM "prdwa17_backup"."videos"
+ "prdwa17_backup"."videos_facts_poc"."commentcount",
+ "prdwa17_backup"."videos_facts_poc"."likecount",
+ "prdwa17_backup"."videos_facts_poc"."dislikecount",
+ "prdwa17_backup"."videos_facts_poc"."viewcount",
+ "prdwa17_backup"."videos_facts_poc"."favoritecount"
+ FROM "prdwa17_backup"."videos_facts_poc"
  INNER JOIN "prdwa17_backup"."channels"
- on "prdwa17_backup"."channels"."fetchedat" = "prdwa17_backup"."videos"."fetchedat" and "prdwa17_backup"."channels"."id" = "prdwa17_backup"."videos"."channelid";
+ on "prdwa17_backup"."channels"."fetchedat" = "prdwa17_backup"."videos_facts_poc"."fetchedat" and "prdwa17_backup"."channels"."id" = "prdwa17_backup"."videos_facts_poc"."channelid";
  
  --INSERTION DES FAITS COMMENTAIRES
  
