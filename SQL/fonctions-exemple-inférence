@@ -1,0 +1,57 @@
+
+select t1.likecount,t1.dislikecount,t1.viewcount,count(*),t2.title from prdwa17_staging.videos as t1
+inner join prdwa17_staging.channels as t2
+on t1.channelid=t2.id
+group by t2.title;
+
+select avg(t1.likecount),avg(t1.dislikecount),avg(t1.viewcount),t2.title from prdwa17_staging.videos as t1
+inner join prdwa17_staging.channels as t2
+on t1.channelid=t2.id
+group by t2.title;
+
+select distinct t1.id, t1.likecount,t1.dislikecount,t1.viewcount, t2.title  from prdwa17_staging.videos as t1
+inner join prdwa17_staging.channels as t2
+on t1.channelid=t2.id
+group by t1.id;
+
+-- Corrélation
+
+SELECT *
+	FROM CORR_REDUCE
+	(
+		ON CORR_MAP
+			(
+			ON (
+				SELECT avg(vf.t_likecount)as c1,avg(vf.t_dislikecount) as c2, avg(vf.t_commentcount) as c3, avg(vf.t_viewcount) as c4 FROM prdwa17_target.t_videofacts as vf
+				INNER JOIN prdwa17_target.t_video as v
+				ON v.code_video = vf.code_video
+				GROUP BY v.code_video
+				) 
+				COLUMNS
+					('[c1:c2],[c1:c3],[c1:c4]')
+				KEY_NAME('key')
+			)
+		PARTITION BY key
+	); 
+
+--Moyenne de likes/dislikes par jour après la sortie de la video 
+--En fonction des chaînes
+SELECT extract('day' from t_actualdate-v.t_publishedat),avg(t_likecount),avg(t_dislikecount),v.t_channeltitle from prdwa17_target.t_videofacts
+inner join prdwa17_target.t_video as v
+on prdwa17_target.t_videofacts.code_video = v.code_video
+group by extract('day' from t_actualdate-v.t_publishedat), v.t_channeltitle
+order by extract('day' from t_actualdate-v.t_publishedat);
+--En fonction des tags (à itérer sur les 3 tags puis à sommer séparément…)
+SELECT extract('day' from t_actualdate-v.t_publishedat),avg(t_likecount),avg(t_dislikecount),v.t_topiccategorie1 from prdwa17_target.t_videofacts
+inner join prdwa17_target.t_video as v
+on prdwa17_target.t_videofacts.code_video = v.code_video
+group by v.t_topiccategorie1,extract('day' from t_actualdate-v.t_publishedat)
+order by extract('day' from t_actualdate-v.t_publishedat);
+
+--En fonction d’un seul tag et par chaîne
+SELECT extract('day' from t_actualdate-v.t_publishedat),avg(t_likecount),avg(t_dislikecount),v.t_channeltitle from prdwa17_target.t_videofacts
+inner join prdwa17_target.t_video as v
+on prdwa17_target.t_videofacts.code_video = v.code_video
+where v.t_topiccategorie1 = 'TRUMP'
+group by extract('day' from t_actualdate-v.t_publishedat), v.t_channeltitle
+order by extract('day' from t_actualdate-v.t_publishedat);
